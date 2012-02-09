@@ -2,4 +2,8 @@ testing text
 
 updating testing text
 
+<<<<<<< HEAD
 testing ronbranch
+=======
+updating testing text from website
+>>>>>>> 0b70128b8f7cb455b3c7dbce55a7ec6e89f78d35
