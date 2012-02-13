@@ -1,6 +1,18 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 testing text
 
 updating testing text
 
 testing ronbranch
 
+=======
+testing text tesjt selkt slektj
+>>>>>>> 4743d9086e4cca801630d6e63f70a1c3c10ff20e
+=======
+testing text tesjt selkt slektj
+
+blah
+
+name test
+>>>>>>> origin/master
