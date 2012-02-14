@@ -20,6 +20,7 @@ namespace ProjectCow
         SpriteBatch spriteBatch;
 
         Spaceship spaceship;
+        SpaceshipInputManager spaceshipInput;
 
         public Game1()
         {
@@ -27,6 +28,7 @@ namespace ProjectCow
             Content.RootDirectory = "Content";
 
             spaceship = new Spaceship();
+            spaceshipInput = new SpaceshipInputManager(spaceship);
         }
 
         /// <summary>
@@ -75,6 +77,7 @@ namespace ProjectCow
                 this.Exit();
 
             // TODO: Add your update logic here
+            spaceshipInput.Update();
             spaceship.Update();
             base.Update(gameTime);
         }

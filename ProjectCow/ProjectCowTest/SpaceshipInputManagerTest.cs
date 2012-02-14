@@ -14,53 +14,45 @@ namespace ProjectCowTest
         [TestMethod]
         public void LeftInputTest()
         {
-            float previousX;
-
             Spaceship spaceship = new Spaceship();
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
-            previousX = spaceship.X;
+            spaceship.X = 300;
             input.ProcessInputs(new KeyboardState(Keys.Left));
-            Assert.AreEqual(previousX - spaceship.Speed, spaceship.X);
+            Assert.AreEqual(300 - spaceship.Speed, spaceship.X);
         }
 
         [TestMethod]
         public void RightInputTest()
         {
-            float previousX;
-
             Spaceship spaceship = new Spaceship();
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
-            previousX = spaceship.X;
+            spaceship.X = 0;
             input.ProcessInputs(new KeyboardState(Keys.Right));
-            Assert.AreEqual(previousX + spaceship.Speed, spaceship.X);
+            Assert.AreEqual(0 + spaceship.Speed, spaceship.X);
         }
 
         [TestMethod]
         public void UpInputTest()
         {
-            float previousY;
-
             Spaceship spaceship = new Spaceship();
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
-            previousY = spaceship.Y;
+            spaceship.Y = 300;
             input.ProcessInputs(new KeyboardState(Keys.Up));
-            Assert.AreEqual(previousY - spaceship.Speed, spaceship.Y);
+            Assert.AreEqual(300 - spaceship.Speed, spaceship.Y);
         }
 
         [TestMethod]
         public void DownInputTest()
         {
-            float previousY;
-
             Spaceship spaceship = new Spaceship();
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
-            previousY = spaceship.Y;
+            spaceship.Y = 0;
             input.ProcessInputs(new KeyboardState(Keys.Down));
-            Assert.AreEqual(previousY + spaceship.Speed, spaceship.Y);
+            Assert.AreEqual(0 + spaceship.Speed, spaceship.Y);
         }
 
         [TestMethod]

@@ -20,53 +20,88 @@ namespace ProjectCowTest
         [TestMethod]
         public void MoveLeftTest()
         {
-            float previousX;
-
             Spaceship spaceship = new Spaceship();
-            previousX = spaceship.X;
+            spaceship.X = 300;
 
             spaceship.MoveLeft();
 
-            Assert.AreEqual(previousX - spaceship.Speed, spaceship.X);
+            Assert.AreEqual(300 - spaceship.Speed, spaceship.X);
         }
 
         [TestMethod]
         public void MoveRightTest()
         {
-            float previousX;
-
             Spaceship spaceship = new Spaceship();
-            previousX = spaceship.X;
+            spaceship.X = 0;
 
             spaceship.MoveRight();
 
-            Assert.AreEqual(previousX + spaceship.Speed, spaceship.X);
+            Assert.AreEqual(0 + spaceship.Speed, spaceship.X);
         }
 
         [TestMethod]
         public void MoveUpTest()
         {
-            float previousY;
-
             Spaceship spaceship = new Spaceship();
-            previousY = spaceship.Y;
+            spaceship.Y = 300;
 
             spaceship.MoveUp();
 
-            Assert.AreEqual(previousY - spaceship.Speed, spaceship.Y);
+            Assert.AreEqual(300 - spaceship.Speed, spaceship.Y);
         }
 
         [TestMethod]
         public void MoveDownTest()
         {
-            float previousY;
-
             Spaceship spaceship = new Spaceship();
-            previousY = spaceship.Y;
+            spaceship.Y = 0;
 
             spaceship.MoveDown();
 
-            Assert.AreEqual(previousY + spaceship.Speed, spaceship.Y);
+            Assert.AreEqual(0 + spaceship.Speed, spaceship.Y);
+        }
+
+        [TestMethod]
+        public void LeftBoundaryTest()
+        {
+            Spaceship spaceship = new Spaceship();
+            spaceship.LeftBoundary = 0;
+            spaceship.MoveLeft();
+
+            Assert.AreEqual(0, spaceship.X);
+        }
+
+        [TestMethod]
+        public void RightBoundaryTest()
+        {
+            Spaceship spaceship = new Spaceship();
+            spaceship.X = 300 - spaceship.Width;
+            spaceship.RightBoundary = 300;
+            spaceship.MoveRight();
+
+            Assert.AreEqual(300 - spaceship.Width, spaceship.X);
+        }
+
+        [TestMethod]
+        public void TopBoundaryTest()
+        {
+            Spaceship spaceship = new Spaceship();
+            spaceship.Y = 0;
+            spaceship.TopBoundary = 0;
+            spaceship.MoveUp();
+
+            Assert.AreEqual(0, spaceship.Y);
+        }
+
+        [TestMethod]
+        public void BottomBoundaryTest()
+        {
+            Spaceship spaceship = new Spaceship();
+            spaceship.Y = 300 - spaceship.Height;
+            spaceship.BottomBoundary = 300;
+            spaceship.MoveDown();
+
+            Assert.AreEqual(300 - spaceship.Height, spaceship.Y);
         }
     }
 }

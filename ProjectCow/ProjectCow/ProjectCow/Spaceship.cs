@@ -13,15 +13,26 @@ namespace ProjectCow
 {
     public class Spaceship
     {
-        Vector2 position;
-        Texture2D image;
+        private readonly Rectangle DEFAULT_BOUNDARY = new Rectangle(0, 0, 1280, 720);
+
+        private Vector2 position;
+        private Rectangle boundaries;
+        private Texture2D image;
 
         public Spaceship()
         {
-            position = new Vector2(0, 0);
+            position = Vector2.Zero;
             Speed = 1;
-
             TractorBeam = false;
+            boundaries = DEFAULT_BOUNDARY;
+        }
+
+        public Spaceship(Rectangle boundaries)
+        {
+            position = Vector2.Zero;
+            Speed = 1;
+            TractorBeam = false;
+            this.boundaries = boundaries;
         }
 
         public void Load(ContentManager content)
@@ -31,22 +42,26 @@ namespace ProjectCow
 
         public void MoveLeft()
         {
-            position.X -= Speed;
+            if (position.X > LeftBoundary)
+                position.X -= Speed;
         }
 
         public void MoveRight()
         {
-            position.X += Speed;
+            if (position.X < RightBoundary)
+                position.X += Speed;
         }
 
         public void MoveUp()
         {
-            position.Y -= Speed;
+            if(position.Y > TopBoundary)
+                position.Y -= Speed;
         }
 
         public void MoveDown()
         {
-            position.Y += Speed;
+            if(position.Y < BottomBoundary)
+                position.Y += Speed;
         }
 
         public void Update()
@@ -60,7 +75,13 @@ namespace ProjectCow
 
         public float X { get { return position.X; } set { position.X = value; } }
         public float Y { get { return position.Y; } set { position.Y = value; } }
-        public float Speed { get; set;  }
+        public float Speed { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public bool TractorBeam { get; set; }
+        public int LeftBoundary { get { return boundaries.Left; } set { boundaries.X = value; } }
+        public int RightBoundary { get { return boundaries.Right; } set { boundaries.Width = value - boundaries.X; } }
+        public int TopBoundary { get { return boundaries.Top; } set { boundaries.Y = value; } }
+        public int BottomBoundary { get { return boundaries.Bottom; } set { boundaries.Height = value - boundaries.Y; } }
     }
 }
