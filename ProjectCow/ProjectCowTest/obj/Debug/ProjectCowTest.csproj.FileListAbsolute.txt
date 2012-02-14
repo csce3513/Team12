@@ -1,0 +1,8 @@
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\bin\Debug\Content\spaceship.xnb
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\bin\Debug\ProjectCowTest.dll
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\bin\Debug\ProjectCowTest.pdb
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\bin\Debug\ProjectCow.exe
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\bin\Debug\ProjectCow.pdb
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.dll
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.pdb
