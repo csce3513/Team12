@@ -75,7 +75,7 @@ namespace ProjectCow
                 this.Exit();
 
             // TODO: Add your update logic here
-            spaceship.Update(gameTime);
+            spaceship.Update();
             base.Update(gameTime);
         }
 

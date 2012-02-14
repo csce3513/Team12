@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpaceshipInputManagerTest.cs" />
     <Compile Include="SpaceshipTest.cs" />
   </ItemGroup>
   <ItemGroup>
