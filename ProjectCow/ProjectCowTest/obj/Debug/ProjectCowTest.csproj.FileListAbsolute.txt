@@ -14,3 +14,11 @@ C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Debug\ProjectC
 C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.dll
 C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\bin\Debug\Content\spaceship.xnb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\bin\Debug\ProjectCowTest.dll
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\bin\Debug\ProjectCowTest.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\bin\Debug\ProjectCow.exe
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\bin\Debug\ProjectCow.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.dll
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCowTest\obj\Debug\ProjectCowTest.pdb

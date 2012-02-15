@@ -22,7 +22,7 @@ namespace ProjectCow
         public Spaceship()
         {
             position = Vector2.Zero;
-            Speed = 1;
+            Speed = 3;
             TractorBeam = false;
             boundaries = DEFAULT_BOUNDARY;
         }
