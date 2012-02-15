@@ -22,14 +22,14 @@ namespace ProjectCow
 
         public void ProcessInputs(KeyboardState state)
         {
-            if (state.IsKeyDown(Keys.Left))
+            if (state.IsKeyDown(Keys.A))
                 spaceship.MoveLeft();
-            else if (state.IsKeyDown(Keys.Right))
+            else if (state.IsKeyDown(Keys.D))
                 spaceship.MoveRight();
 
-            if (state.IsKeyDown(Keys.Up))
+            if (state.IsKeyDown(Keys.W))
                 spaceship.MoveUp();
-            else if (state.IsKeyDown(Keys.Down))
+            else if (state.IsKeyDown(Keys.S))
                 spaceship.MoveDown();
 
             if (state.IsKeyDown(Keys.Space))

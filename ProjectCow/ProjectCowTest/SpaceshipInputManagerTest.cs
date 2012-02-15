@@ -18,7 +18,7 @@ namespace ProjectCowTest
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             spaceship.X = 300;
-            input.ProcessInputs(new KeyboardState(Keys.Left));
+            input.ProcessInputs(new KeyboardState(Keys.A));
             Assert.AreEqual(300 - spaceship.Speed, spaceship.X);
         }
 
@@ -29,7 +29,7 @@ namespace ProjectCowTest
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             spaceship.X = 0;
-            input.ProcessInputs(new KeyboardState(Keys.Right));
+            input.ProcessInputs(new KeyboardState(Keys.D));
             Assert.AreEqual(0 + spaceship.Speed, spaceship.X);
         }
 
@@ -40,7 +40,7 @@ namespace ProjectCowTest
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             spaceship.Y = 300;
-            input.ProcessInputs(new KeyboardState(Keys.Up));
+            input.ProcessInputs(new KeyboardState(Keys.W));
             Assert.AreEqual(300 - spaceship.Speed, spaceship.Y);
         }
 
@@ -51,7 +51,7 @@ namespace ProjectCowTest
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             spaceship.Y = 0;
-            input.ProcessInputs(new KeyboardState(Keys.Down));
+            input.ProcessInputs(new KeyboardState(Keys.S));
             Assert.AreEqual(0 + spaceship.Speed, spaceship.Y);
         }
 

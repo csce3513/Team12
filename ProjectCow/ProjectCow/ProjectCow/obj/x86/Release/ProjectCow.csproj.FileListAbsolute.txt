@@ -1,0 +1,7 @@
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\bin\x86\Release\Content\spaceship.xnb
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\bin\x86\Release\ProjectCow.exe
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\bin\x86\Release\ProjectCow.pdb
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\obj\x86\Release\ProjectCow.exe
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\obj\x86\Release\ProjectCow.pdb
