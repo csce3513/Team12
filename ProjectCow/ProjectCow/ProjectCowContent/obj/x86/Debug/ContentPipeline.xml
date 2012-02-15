@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\Content\spaceship.xnb</Output>
+      <Output>C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\Content\spaceship.xnb</Output>
       <Time>2012-02-15T16:01:22.721-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -16,10 +16,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCowContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCowContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCowContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCow\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCowContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

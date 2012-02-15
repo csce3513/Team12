@@ -27,6 +27,7 @@ namespace ProjectCow
             boundaries = DEFAULT_BOUNDARY;
         }
 
+        //this constructor mainly used for testing
         public Spaceship(Rectangle boundaries)
         {
             position = Vector2.Zero;
