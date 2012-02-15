@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace WindowsGame2
+namespace ProjectCow
 {
-    class Background
+    public class Background
     {
         //The current position of the Sprite
         public Vector2 Position = new Vector2(0,0);
