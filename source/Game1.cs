@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-
 namespace ProjectCow
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.GamerServices;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>
@@ -19,18 +19,14 @@ namespace ProjectCow
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Background background;
-        Spaceship spaceship;
-        SpaceshipInputManager spaceshipInput;
+        ScreenManager screenManager;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            background = new Background();
-            spaceship = new Spaceship();
-            spaceshipInput = new SpaceshipInputManager(spaceship);
+            screenManager = new ScreenManager();
         }
 
         /// <summary>
@@ -55,8 +51,8 @@ namespace ProjectCow
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            background.LoadContent(this.Content);
-            spaceship.Load(this.Content);
+            screenManager.Load(this.Content);
+            screenManager.PushScreen(new GameScreen());
         }
 
         /// <summary>
@@ -80,8 +76,7 @@ namespace ProjectCow
                 this.Exit();
 
             // TODO: Add your update logic here
-            spaceshipInput.Update();
-            spaceship.Update();
+            screenManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -95,8 +90,7 @@ namespace ProjectCow
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            background.Draw(spriteBatch);
-            spaceship.Draw(spriteBatch);
+            screenManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
