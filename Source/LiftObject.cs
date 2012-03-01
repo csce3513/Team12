@@ -1,63 +1,57 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace ufogame
+﻿namespace ProjectCow
 {
-    class LiftObject : InteractObject
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    public abstract class LiftObject : GameObject
     {
-        const int MOVE_UP = -1;
-        const int MOVE_DOWN = 1;
-        const int MOVE_LEFT = -1;
-        const int MOVE_RIGHT = 1;
+        protected Vector2 speed;
+        public float Width { get; set; }
+        public float Height { get; set; }
+        // How much it resists the pull
+        protected float resistance;
 
-      
-        Vector2 direction = Vector2.Zero;
-        Vector2 speed = Vector2.Zero;
-        KeyboardState prevkeystate;
-
-
-        public void UpdateIAO(GameTime gametime)
+        public LiftObject(Vector2 position, float resistance) : base(position)
         {
-            KeyboardState curkeystate = Keyboard.GetState();
-            UpdateMoveIAO(curkeystate);
-            prevkeystate = curkeystate;
-            base.UpdateIAO(gametime, speed, direction);
+            this.resistance = resistance;
         }
 
-        private void UpdateMoveIAO(KeyboardState curkeystate)
+        public abstract void LoadContent(ContentManager content);
+        public override void Update()
         {
-           
-                speed = Vector2.Zero;
-                direction = Vector2.Zero;
-
-                if (curkeystate.IsKeyDown(Keys.Space) == true)
-                {
-                    speed.Y = 160;
-                    direction.Y = MOVE_UP;
-                    scale -= 0.01f;
-                }
-                else
-                {
-                    if (position.Y < 350)
-                    {
-                        speed.Y = 160;
-                        direction.Y = MOVE_DOWN;
-                        scale += 0.01f;
-                    }
-                }
-                
+            if (this.Position.X != this.OriginalX)
+            {
+                speed.Y += this.GRAVITY;
+                this.Position += speed;
+            }
         }
 
+        public void Lift(Vector2 spaceshipCenter, float pullAcceleration, Vector2 beamPosition, int beamWidth)
+        {
+            if (IsInBeamRange(beamPosition, beamWidth))
+            {
+                // Algorithm to pull the object to center of spaceship at given acceleration
+                Vector2 direction = spaceshipCenter - this.Position;
+                direction.Normalize();
+                speed.X += direction.X * pullAcceleration + resistance;
+                speed.Y += direction.Y * pullAcceleration + resistance;
+            }
+        }
 
+        // Check if object is in beam's range. Only checking width so far.
+        protected bool IsInBeamRange(Vector2 beamPosition, int beamWidth)
+        {
+            // Edges of object
+            float leftEdge = this.Position.X;
+            float rightEdge = leftEdge + this.Width;
 
-
-
-
-
-
+            if ((leftEdge < beamPosition.X + beamWidth && leftEdge > beamPosition.X) ||
+                (rightEdge > beamPosition.X && rightEdge < beamPosition.X + beamWidth))
+                return true;
+            else
+                return false;
+        }
     }
 }
