@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4da1c620-798c-4444-9aca-5ccdc65a675f" name="Sazan@VIETBEASTLAPTOP 2012-02-13 15:35:14" runUser="VietBeastLaptop\Sazan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0cf157e1-6e26-4dd6-8238-f2896789c664">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Sazan_VIETBEASTLAPTOP 2012-02-13 15_35_14">
+      <DeploymentItem filename="C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\ProjectCow.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-02-13T15:35:14.6297376-06:00" queuing="2012-02-13T15:35:16.7608595-06:00" start="2012-02-13T15:35:16.8908670-06:00" finish="2012-02-13T15:35:18.1399384-06:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="MoveLeftTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="d21f0c20-4809-e616-ccdf-616dc964b5c7">
+      <Execution id="aac39497-a491-4c67-aa0e-a987d6d560e4" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveLeftTest" />
+    </UnitTest>
+    <UnitTest name="MoveRightTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="8f327921-6561-e5da-1949-9b8c6a98b8dc">
+      <Execution id="43611981-6017-4908-8eaf-aa0df274372e" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveRightTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d21f0c20-4809-e616-ccdf-616dc964b5c7" executionId="aac39497-a491-4c67-aa0e-a987d6d560e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f327921-6561-e5da-1949-9b8c6a98b8dc" executionId="43611981-6017-4908-8eaf-aa0df274372e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="aac39497-a491-4c67-aa0e-a987d6d560e4" testId="d21f0c20-4809-e616-ccdf-616dc964b5c7" testName="MoveLeftTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.1352332" startTime="2012-02-13T15:35:16.9958730-06:00" endTime="2012-02-13T15:35:18.0199315-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aac39497-a491-4c67-aa0e-a987d6d560e4">
+    </UnitTestResult>
+    <UnitTestResult executionId="43611981-6017-4908-8eaf-aa0df274372e" testId="8f327921-6561-e5da-1949-9b8c6a98b8dc" testName="MoveRightTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0004487" startTime="2012-02-13T15:35:18.0359324-06:00" endTime="2012-02-13T15:35:18.0409327-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43611981-6017-4908-8eaf-aa0df274372e">
+    </UnitTestResult>
+  </Results>
+</TestRun>

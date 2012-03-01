@@ -1,0 +1,8 @@
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Release\Content\spaceship.xnb
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Release\ProjectCowTest.dll
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Release\ProjectCowTest.pdb
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Release\ProjectCow.exe
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\bin\Release\ProjectCow.pdb
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Release\ProjectCowTest.dll
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCowTest\obj\Release\ProjectCowTest.pdb

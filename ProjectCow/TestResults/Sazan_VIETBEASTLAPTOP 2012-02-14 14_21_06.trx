@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f3095ed8-7178-45aa-b3c7-95aaa7400d10" name="Sazan@VIETBEASTLAPTOP 2012-02-14 14:21:06" runUser="VietBeastLaptop\Sazan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0cf157e1-6e26-4dd6-8238-f2896789c664">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Sazan_VIETBEASTLAPTOP 2012-02-14 14_21_06">
+      <DeploymentItem filename="C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCow\ProjectCow\bin\x86\Debug\ProjectCow.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-02-14T14:21:06.4781152-06:00" queuing="2012-02-14T14:21:06.7641316-06:00" start="2012-02-14T14:21:06.8151345-06:00" finish="2012-02-14T14:21:07.2691605-06:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="10" executed="10" passed="9" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DownInputTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="5242c20b-7ba7-ea02-19d4-5f40234ca4f0">
+      <Execution id="48eba20c-b53f-4417-ad2d-84e43dcbfbb0" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipInputManagerTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DownInputTest" />
+    </UnitTest>
+    <UnitTest name="MoveUpTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="462c57fc-d3b0-3ed4-1248-c27331ea02ed">
+      <Execution id="97bf130e-5b30-46a1-bd8c-146846562f57" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveUpTest" />
+    </UnitTest>
+    <UnitTest name="RightInputTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="533e95b8-8d46-b3dd-d0e5-99726e6d7faa">
+      <Execution id="886f4fef-e1a9-420e-a1a8-f2fd3d0dbbde" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipInputManagerTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RightInputTest" />
+    </UnitTest>
+    <UnitTest name="UpInputTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="58550877-0f0d-0116-6cba-c9de52709a18">
+      <Execution id="8aaf0223-cbab-4c38-a1fb-5a0ec98cd6aa" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipInputManagerTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpInputTest" />
+    </UnitTest>
+    <UnitTest name="LeftBoundaryTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="c339b4fb-778d-3306-7ea2-4edf321d3414">
+      <Execution id="befc2a03-2afa-4c92-ba49-a9da53ee527f" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LeftBoundaryTest" />
+    </UnitTest>
+    <UnitTest name="MoveLeftTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="d21f0c20-4809-e616-ccdf-616dc964b5c7">
+      <Execution id="b0f1fa12-6422-48f3-ab6e-a16643522b56" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveLeftTest" />
+    </UnitTest>
+    <UnitTest name="ProcessSpaceInputTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="5d5a6482-420d-43b8-2aa9-b23e025342d9">
+      <Execution id="ea886d5b-57c3-420f-b6d8-0c1be15356ad" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipInputManagerTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ProcessSpaceInputTest" />
+    </UnitTest>
+    <UnitTest name="MoveDownTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="e238371f-898d-4127-1983-f6ab8f3b9c24">
+      <Execution id="12a61b01-85d6-4dba-9bbd-5fe25a8ace85" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveDownTest" />
+    </UnitTest>
+    <UnitTest name="LeftInputTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="0195d3d9-3842-082a-0a73-666702ddd1d4">
+      <Execution id="636f94e6-f02f-4ee3-9a32-b3461e86061b" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipInputManagerTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LeftInputTest" />
+    </UnitTest>
+    <UnitTest name="MoveRightTest" storage="c:\users\sazan\documents\projects\visual studio\general\projectcow\projectcowtest\bin\debug\projectcowtest.dll" id="8f327921-6561-e5da-1949-9b8c6a98b8dc">
+      <Execution id="599b1989-4c75-4c27-b490-464c80080a33" />
+      <TestMethod codeBase="C:/Users/Sazan/Documents/Projects/Visual Studio/General/ProjectCow/ProjectCowTest/bin/Debug/ProjectCowTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectCowTest.SpaceshipTest, ProjectCowTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveRightTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="0195d3d9-3842-082a-0a73-666702ddd1d4" executionId="636f94e6-f02f-4ee3-9a32-b3461e86061b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="533e95b8-8d46-b3dd-d0e5-99726e6d7faa" executionId="886f4fef-e1a9-420e-a1a8-f2fd3d0dbbde" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58550877-0f0d-0116-6cba-c9de52709a18" executionId="8aaf0223-cbab-4c38-a1fb-5a0ec98cd6aa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5242c20b-7ba7-ea02-19d4-5f40234ca4f0" executionId="48eba20c-b53f-4417-ad2d-84e43dcbfbb0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d5a6482-420d-43b8-2aa9-b23e025342d9" executionId="ea886d5b-57c3-420f-b6d8-0c1be15356ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d21f0c20-4809-e616-ccdf-616dc964b5c7" executionId="b0f1fa12-6422-48f3-ab6e-a16643522b56" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f327921-6561-e5da-1949-9b8c6a98b8dc" executionId="599b1989-4c75-4c27-b490-464c80080a33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="462c57fc-d3b0-3ed4-1248-c27331ea02ed" executionId="97bf130e-5b30-46a1-bd8c-146846562f57" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e238371f-898d-4127-1983-f6ab8f3b9c24" executionId="12a61b01-85d6-4dba-9bbd-5fe25a8ace85" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c339b4fb-778d-3306-7ea2-4edf321d3414" executionId="befc2a03-2afa-4c92-ba49-a9da53ee527f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="636f94e6-f02f-4ee3-9a32-b3461e86061b" testId="0195d3d9-3842-082a-0a73-666702ddd1d4" testName="LeftInputTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0568266" startTime="2012-02-14T14:21:06.8261351-06:00" endTime="2012-02-14T14:21:07.1891559-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="636f94e6-f02f-4ee3-9a32-b3461e86061b">
+    </UnitTestResult>
+    <UnitTestResult executionId="886f4fef-e1a9-420e-a1a8-f2fd3d0dbbde" testId="533e95b8-8d46-b3dd-d0e5-99726e6d7faa" testName="RightInputTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0004389" startTime="2012-02-14T14:21:07.1901560-06:00" endTime="2012-02-14T14:21:07.1931561-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="886f4fef-e1a9-420e-a1a8-f2fd3d0dbbde">
+    </UnitTestResult>
+    <UnitTestResult executionId="8aaf0223-cbab-4c38-a1fb-5a0ec98cd6aa" testId="58550877-0f0d-0116-6cba-c9de52709a18" testName="UpInputTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0004944" startTime="2012-02-14T14:21:07.1951562-06:00" endTime="2012-02-14T14:21:07.1981564-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8aaf0223-cbab-4c38-a1fb-5a0ec98cd6aa">
+    </UnitTestResult>
+    <UnitTestResult executionId="48eba20c-b53f-4417-ad2d-84e43dcbfbb0" testId="5242c20b-7ba7-ea02-19d4-5f40234ca4f0" testName="DownInputTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0004282" startTime="2012-02-14T14:21:07.1991565-06:00" endTime="2012-02-14T14:21:07.2021566-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48eba20c-b53f-4417-ad2d-84e43dcbfbb0">
+    </UnitTestResult>
+    <UnitTestResult executionId="ea886d5b-57c3-420f-b6d8-0c1be15356ad" testId="5d5a6482-420d-43b8-2aa9-b23e025342d9" testName="ProcessSpaceInputTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0003783" startTime="2012-02-14T14:21:07.2031567-06:00" endTime="2012-02-14T14:21:07.2061569-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea886d5b-57c3-420f-b6d8-0c1be15356ad">
+    </UnitTestResult>
+    <UnitTestResult executionId="b0f1fa12-6422-48f3-ab6e-a16643522b56" testId="d21f0c20-4809-e616-ccdf-616dc964b5c7" testName="MoveLeftTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0003214" startTime="2012-02-14T14:21:07.2071569-06:00" endTime="2012-02-14T14:21:07.2101571-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0f1fa12-6422-48f3-ab6e-a16643522b56">
+    </UnitTestResult>
+    <UnitTestResult executionId="599b1989-4c75-4c27-b490-464c80080a33" testId="8f327921-6561-e5da-1949-9b8c6a98b8dc" testName="MoveRightTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0002453" startTime="2012-02-14T14:21:07.2111572-06:00" endTime="2012-02-14T14:21:07.2141573-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="599b1989-4c75-4c27-b490-464c80080a33">
+    </UnitTestResult>
+    <UnitTestResult executionId="97bf130e-5b30-46a1-bd8c-146846562f57" testId="462c57fc-d3b0-3ed4-1248-c27331ea02ed" testName="MoveUpTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0002621" startTime="2012-02-14T14:21:07.2151574-06:00" endTime="2012-02-14T14:21:07.2181576-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="97bf130e-5b30-46a1-bd8c-146846562f57">
+    </UnitTestResult>
+    <UnitTestResult executionId="12a61b01-85d6-4dba-9bbd-5fe25a8ace85" testId="e238371f-898d-4127-1983-f6ab8f3b9c24" testName="MoveDownTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0002248" startTime="2012-02-14T14:21:07.2191576-06:00" endTime="2012-02-14T14:21:07.2221578-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12a61b01-85d6-4dba-9bbd-5fe25a8ace85">
+    </UnitTestResult>
+    <UnitTestResult executionId="befc2a03-2afa-4c92-ba49-a9da53ee527f" testId="c339b4fb-778d-3306-7ea2-4edf321d3414" testName="LeftBoundaryTest" computerName="VIETBEASTLAPTOP" duration="00:00:00.0199895" startTime="2012-02-14T14:21:07.2241579-06:00" endTime="2012-02-14T14:21:07.2471592-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="befc2a03-2afa-4c92-ba49-a9da53ee527f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;0&gt;. Actual:&lt;-1&gt;. </Message>
+          <StackTrace>   at ProjectCowTest.SpaceshipTest.LeftBoundaryTest() in C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCowTest\SpaceshipTest.cs:line 80
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

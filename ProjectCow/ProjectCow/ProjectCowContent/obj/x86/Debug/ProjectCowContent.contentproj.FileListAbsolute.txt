@@ -1,0 +1,3 @@
+C:\Users\Sazan\Documents\Projects\Visual Studio\General\ProjectCow\ProjectCow\ProjectCowContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Josh\Desktop\Team12\Team12\ProjectCow\ProjectCow\ProjectCowContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\ProjectCow\ProjectCow\ProjectCowContent\obj\x86\Debug\ResolveAssemblyReference.cache
