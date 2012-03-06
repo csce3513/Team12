@@ -87,7 +87,7 @@ namespace ProjectCow
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, new Rectangle(0, 0, 50, 50), Color.White);
+            spriteBatch.Draw(image, position, Color.White);
         }
     }
 }

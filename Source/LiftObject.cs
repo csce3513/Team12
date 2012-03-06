@@ -7,21 +7,29 @@
 
     public abstract class LiftObject : GameObject
     {
+        // Gravity positive since Y increases as you go down
+        protected readonly float GRAVITY = 9.8f;
+
+        // Original y used to determine where the object will land when dropped
+        public float OriginalY { get; protected set; }
+
         protected Vector2 speed;
         public float Width { get; set; }
         public float Height { get; set; }
+
         // How much it resists the pull
         protected float resistance;
 
-        public LiftObject(Vector2 position, float resistance) : base(position)
+        public LiftObject(Vector2 position, float resistance)
         {
+            OriginalY = position.Y;
+            Position = position;
             this.resistance = resistance;
         }
 
-        public abstract void LoadContent(ContentManager content);
         public override void Update()
         {
-            if (this.Position.X != this.OriginalX)
+            if (this.Position.Y != this.OriginalY)
             {
                 speed.Y += this.GRAVITY;
                 this.Position += speed;
