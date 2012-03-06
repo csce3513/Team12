@@ -14,6 +14,7 @@
     public abstract class Beam
     {
         public Vector2 Position { get; protected set; }
+        public bool IsSelected { get; set; }
         protected Texture2D Image { get; set; }
 
         public abstract void LoadContent(ContentManager content);
