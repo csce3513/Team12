@@ -22,13 +22,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 
 
-namespace ufogame
+namespace ProjectCow
 {
     public class InteractObject
     {
 
         //Variables for position on screen, uploaded image, and size.
-        public Vector2 position = new Vector2(0, 0);
+        public Vector2 position = new Vector2(300, 380);
         private Texture2D image;
         public Rectangle size;
         public float scale = 1.0f;
@@ -62,7 +62,16 @@ namespace ufogame
         {
             position += direction * speed * (float)gametime.ElapsedGameTime.TotalSeconds;
         }
-        
+
+        public int getWidth()
+        {
+            return size.Width;
+        }
+
+        public int getHeight()
+        {
+            return size.Height;
+        }
 
     }
 }

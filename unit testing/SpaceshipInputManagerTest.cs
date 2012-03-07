@@ -1,13 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectCow;
-using Microsoft.Xna.Framework.Input;
-
-namespace ProjectCowTest
+﻿namespace ProjectCowTest
 {
+    using System;
+    using System.Text;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ProjectCow;
+    using Microsoft.Xna.Framework.Input;
+
     [TestClass]
     public class SpaceshipInputManagerTest
     {
@@ -62,7 +62,7 @@ namespace ProjectCowTest
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             input.ProcessInputs(new KeyboardState(Keys.Space));
-            Assert.IsTrue(spaceship.TractorBeam);
+            Assert.IsTrue(spaceship.BeamOn);
         }
     }
 }
