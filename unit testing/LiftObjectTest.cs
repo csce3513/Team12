@@ -25,8 +25,9 @@ namespace ProjectCowTest
             cow.Position = new Vector2(0, 0);
             cow.Update();
 
-            Assert.AreEqual(9.8f, cow.Position.Y);
+            Assert.AreEqual(0.98f, cow.Position.Y);
 
+            // Test that cow doesn't move when on ground
             cow.Position = new Vector2(100, 200);
             cow.Update();
 
@@ -38,8 +39,28 @@ namespace ProjectCowTest
         {
             LiftObjectTestClass cow = new LiftObjectTestClass(Vector2.Zero, 0);
 
+            // Test when beam is in range
             Assert.IsTrue(cow.IsInBeamRange(new Vector2(-20, 0), 50));
+            // Test when beam out of range
             Assert.IsFalse(cow.IsInBeamRange(new Vector2(-50, 0), 49));
+        }
+
+        [TestMethod]
+        public void LiftTest()
+        {
+            // Test lift that hits
+            LiftObjectTestClass cow = new LiftObjectTestClass(new Vector2(0, 400), 0);
+            cow.Lift(Vector2.Zero, 15, Vector2.Zero, 500);
+            cow.Update();
+
+            Assert.IsTrue(cow.Position.Y < 400);
+
+            // Test lift that doesn't hit cow
+            cow = new LiftObjectTestClass(new Vector2(0, 400), 0);
+            cow.Lift(Vector2.Zero, 15, new Vector2(300, 0), 500);
+            cow.Update();
+
+            Assert.IsTrue(cow.Position.Y == 400);
         }
     }
 }

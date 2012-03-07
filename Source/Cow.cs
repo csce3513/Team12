@@ -18,6 +18,8 @@
         public override void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("cartooncow2");
+            Width = image.Width;
+            Height = image.Height;
         }
     }
 }

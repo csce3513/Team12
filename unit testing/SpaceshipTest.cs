@@ -103,5 +103,13 @@
 
             Assert.AreEqual(300 - spaceship.Height, spaceship.Y);
         }
+
+        [TestMethod]
+        public void GetBeamNameTest()
+        {
+            Spaceship spaceship = new Spaceship();
+
+            Assert.AreEqual("Tractor Beam", spaceship.CurrentBeam.Name);
+        }
     }
 }

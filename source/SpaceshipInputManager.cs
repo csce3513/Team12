@@ -33,9 +33,9 @@
                 spaceship.MoveDown();
 
             if (state.IsKeyDown(Keys.Space))
-                spaceship.TractorBeam = true;
+                spaceship.BeamOn = true;
             else
-                spaceship.TractorBeam = false;
+                spaceship.BeamOn = false;
         }
 
         public void Update()

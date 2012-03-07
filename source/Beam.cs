@@ -14,8 +14,12 @@
     public abstract class Beam
     {
         public Vector2 Position { get; protected set; }
-        public bool IsSelected { get; set; }
+        public String Name { get; protected set; }
+        public int Width { get; protected set; }
         protected Texture2D Image { get; set; }
+
+        // Sets the acceleration of the beam
+        public float Force { get; protected set; }
 
         public abstract void LoadContent(ContentManager content);
 
@@ -27,7 +31,8 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Image, Position, Color.White);
+            if(Image != null)
+                spriteBatch.Draw(Image, Position, Color.White);
         }
     }
 }

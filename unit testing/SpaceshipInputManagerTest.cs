@@ -62,7 +62,7 @@
             SpaceshipInputManager input = new SpaceshipInputManager(spaceship);
 
             input.ProcessInputs(new KeyboardState(Keys.Space));
-            Assert.IsTrue(spaceship.TractorBeam);
+            Assert.IsTrue(spaceship.BeamOn);
         }
     }
 }

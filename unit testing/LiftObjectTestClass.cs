@@ -15,7 +15,7 @@
         {
         }
 
-        public new bool IsInBeamRange(Vector2 beamPosition, int beamWidth)
+        public bool IsInBeamRange(Vector2 beamPosition, int beamWidth)
         {
             // Edges of object
             float leftEdge = this.Position.X;

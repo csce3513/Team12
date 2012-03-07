@@ -23,6 +23,7 @@
         public GameScreen()
         {
             background = new Background();
+            background.setBackgroundImage();
             spaceship = new Spaceship();
             spaceshipInput = new SpaceshipInputManager(spaceship);
             cow = new Cow(new Vector2(100, 400), 0);
@@ -38,11 +39,31 @@
             }
         }
 
+        private void OperateTractorBeam()
+        {
+            Vector2 spaceshipCenter = new Vector2(spaceship.X + spaceship.Width / 2, spaceship.Y + spaceship.Height / 2);
+
+            // Objects manager would be useful here to separate liftable objects from others
+            // Currently using spaceships width for beam width
+            cow.Lift(spaceshipCenter, spaceship.CurrentBeam.Force, spaceship.CurrentBeam.Position, spaceship.Width);
+        }
+
+        private String DetermineBeam()
+        {
+            if (spaceship.CurrentBeam.Name == "Tractor Beam")
+                OperateTractorBeam();
+
+            return spaceship.CurrentBeam.Name;
+        }
+
         public void Update(GameTime gameTime)
         {
             spaceshipInput.Update();
             spaceship.Update();
             cow.Update();
+
+            if (spaceship.BeamOn)
+                DetermineBeam();
         }
 
         public void Draw(SpriteBatch spriteBatch)
