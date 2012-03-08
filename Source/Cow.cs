@@ -10,8 +10,8 @@
 
     public class Cow : LiftObject
     {
-        public Cow(Vector2 position, float resistance)
-            : base(position, resistance)
+        public Cow(Vector2 position, float resistance, GameObjectsManager manager)
+            : base(position, resistance, manager)
         {
         }
 

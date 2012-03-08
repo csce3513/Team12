@@ -20,7 +20,7 @@
         // How much it resists the pull
         protected float resistance;
 
-        public LiftObject(Vector2 position, float resistance)
+        public LiftObject(Vector2 position, float resistance, GameObjectsManager manager) : base(manager)
         {
             OriginalY = position.Y;
             Position = position;

@@ -17,6 +17,7 @@
         private Spaceship spaceship;
         private SpaceshipInputManager spaceshipInput;
         private Cow cow;
+        private GameObjectsManager gameObjectsManager;
 
         public ScreenManager Manager { get; set; }
 
@@ -25,7 +26,8 @@
             background = new Background();
             spaceship = new Spaceship();
             spaceshipInput = new SpaceshipInputManager(spaceship);
-            cow = new Cow(new Vector2(100, 400), 0);
+            gameObjectsManager = new GameObjectsManager();
+            cow = new Cow(new Vector2(100, 400), 0, gameObjectsManager);
         }
 
         public void LoadContent(ContentManager content)

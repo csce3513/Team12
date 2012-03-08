@@ -9,9 +9,11 @@
         public Vector2 Position { get; set; }
         public float Scale { get; set; }
         protected Texture2D image;
+        protected GameObjectsManager manager;
 
-        public GameObject()
+        public GameObject(GameObjectsManager manager)
         {
+            this.manager = manager;
             Scale = 1.0f;
         }
 

@@ -30,7 +30,7 @@ namespace ProjectCowTest
             Spaceship spaceship = new Spaceship();
             spaceship.X = 49;
             spaceship.Width = 200;
-            Cow cow = new Cow(new Vector2(50, 500), 0);
+            Cow cow = new Cow(new Vector2(50, 500), 0, null);
 
             screen.SetField("spaceship", spaceship);
             screen.SetField("cow", cow);
