@@ -27,6 +27,7 @@ namespace ProjectCow
             Content.RootDirectory = "Content";
 
             screenManager = new ScreenManager();
+            graphics.PreferredBackBufferWidth = 720;
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace ProjectCow
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (screenManager.Exit)
                 this.Exit();
 
             // TODO: Add your update logic here

@@ -81,7 +81,7 @@ namespace ProjectCow
 
         public void MoveRight()
         {
-            if (position.X < RightBoundary)
+            if (position.X + Width < RightBoundary)
                 position.X += Speed;
         }
 

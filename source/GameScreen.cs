@@ -23,7 +23,6 @@
         public GameScreen()
         {
             background = new Background();
-            background.setBackgroundImage();
             spaceship = new Spaceship();
             spaceshipInput = new SpaceshipInputManager(spaceship);
             cow = new Cow(new Vector2(100, 400), 0);
@@ -64,6 +63,12 @@
 
             if (spaceship.BeamOn)
                 DetermineBeam();
+
+            if (spaceship.X + spaceship.Width >= spaceship.RightBoundary)
+            {
+                background.setBackgroundImage();
+                spaceship.X = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

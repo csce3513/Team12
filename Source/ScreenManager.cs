@@ -15,6 +15,7 @@
     {
         public Stack<IScreen> Screens { get; private set; }
         public ContentManager Content { get; private set; }
+        public bool Exit { get; set; }
 
         public ScreenManager()
         {
