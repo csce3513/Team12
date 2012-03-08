@@ -17,14 +17,19 @@
             random = new Random();
         }
 
-        public void GenerateRandomObject()
+        public void AddRandomObject()
         {
             // TODO: Implement randomness once more objects are created
 
-            // TODO: Replace min and max position values
+            // TODO: Replace min and max position values with real ones
             Vector2 position = new Vector2(random.Next(0, 700), random.Next(380, 420));
 
-            liftObjects.Add(new Cow(position, 0, this));
+            AddObject(new Cow(position, 0, this));
+        }
+
+        public void AddObject(LiftObject liftObject)
+        {
+            liftObjects.Add(liftObject);
         }
     }
 }
