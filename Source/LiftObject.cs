@@ -29,7 +29,7 @@
             this.resistance = resistance;
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             speed.Y += this.GRAVITY;
             this.Position += speed;

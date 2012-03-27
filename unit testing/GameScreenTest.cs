@@ -36,7 +36,7 @@ namespace ProjectCowTest
             screen.SetField("cow", cow);
             screen.Invoke("OperateTractorBeam");
             cow = (Cow)screen.GetField("cow");
-            cow.Update();
+            cow.Update(new GameTime());
 
             Assert.IsTrue(cow.Position.Y < 500);
         }

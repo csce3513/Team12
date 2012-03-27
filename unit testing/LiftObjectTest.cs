@@ -26,13 +26,13 @@ namespace ProjectCowTest
         {
             LiftObjectTestClass cow = new LiftObjectTestClass(new Vector2(0, 200), 0, manager);
             cow.Position = new Vector2(0, 0);
-            cow.Update();
+            cow.Update(new GameTime());
 
             Assert.AreEqual(0.98f, cow.Position.Y);
 
             // Test that cow doesn't move when on ground
             cow.Position = new Vector2(100, 200);
-            cow.Update();
+            cow.Update(new GameTime());
 
             Assert.AreEqual(200, cow.Position.Y);
         }
@@ -54,14 +54,14 @@ namespace ProjectCowTest
             // Test lift that hits
             LiftObjectTestClass cow = new LiftObjectTestClass(new Vector2(0, 400), 0, manager);
             cow.Lift(Vector2.Zero, 15, Vector2.Zero, 500);
-            cow.Update();
+            cow.Update(new GameTime());
 
             Assert.IsTrue(cow.Position.Y < 400);
 
             // Test lift that doesn't hit cow
             cow = new LiftObjectTestClass(new Vector2(0, 400), 0, manager);
             cow.Lift(Vector2.Zero, 15, new Vector2(300, 0), 500);
-            cow.Update();
+            cow.Update(new GameTime());
 
             Assert.IsTrue(cow.Position.Y == 400);
         }

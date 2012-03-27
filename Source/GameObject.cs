@@ -18,7 +18,7 @@
         }
 
         public abstract void LoadContent(ContentManager content);
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -61,7 +61,7 @@
         {
             spaceshipInput.Update();
             spaceship.Update();
-            cow.Update();
+            cow.Update(gameTime);
 
             if (spaceship.BeamOn)
                 DetermineBeam();
