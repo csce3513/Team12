@@ -16,8 +16,10 @@
         private Background background;
         private Spaceship spaceship;
         private SpaceshipInputManager spaceshipInput;
-        private Cow cow;
         private GameObjectsManager gameObjectsManager;
+        // Have one random to pass on to all objects
+        // or each random call will be same value
+        private Random random;
 
         public ScreenManager Manager { get; set; }
 
@@ -26,8 +28,11 @@
             background = new Background();
             spaceship = new Spaceship();
             spaceshipInput = new SpaceshipInputManager(spaceship);
-            gameObjectsManager = new GameObjectsManager();
-            cow = new Cow(new Vector2(100, 400), 0, gameObjectsManager);
+            random = new Random();
+            gameObjectsManager = new GameObjectsManager(random);
+            gameObjectsManager.AddRandomObject();
+            gameObjectsManager.AddRandomObject();
+            gameObjectsManager.AddRandomObject();
         }
 
         public void LoadContent(ContentManager content)
@@ -35,18 +40,14 @@
             if (content != null)
             {
                 background.LoadContent(content);
+                gameObjectsManager.LoadContent(content);
                 spaceship.LoadContent(content);
-                cow.LoadContent(content);
             }
         }
 
         private void OperateTractorBeam()
         {
-            Vector2 spaceshipCenter = new Vector2(spaceship.X + spaceship.Width / 2, spaceship.Y + spaceship.Height / 2);
-
-            // Objects manager would be useful here to separate liftable objects from others
-            // Currently using spaceships width for beam width
-            cow.Lift(spaceshipCenter, spaceship.CurrentBeam.Force, spaceship.CurrentBeam.Position, spaceship.Width);
+            gameObjectsManager.LiftObjects(spaceship);
         }
 
         private String DetermineBeam()
@@ -61,15 +62,20 @@
         {
             spaceshipInput.Update();
             spaceship.Update();
-            cow.Update(gameTime);
+            gameObjectsManager.Update(gameTime);
 
             if (spaceship.BeamOn)
                 DetermineBeam();
 
             if (spaceship.X + spaceship.Width >= spaceship.RightBoundary)
             {
-                background.setBackgroundImage();
+                background.LoadNextBackground();
                 spaceship.X = 0;
+            }
+            else if (spaceship.X < spaceship.LeftBoundary)
+            {
+                background.LoadPreviousBackground();
+                spaceship.X = spaceship.RightBoundary - spaceship.Width - 1;
             }
         }
 
@@ -77,7 +83,7 @@
         {
             background.Draw(spriteBatch);
             spaceship.Draw(spriteBatch);
-            cow.Draw(spriteBatch);
+            gameObjectsManager.Draw(spriteBatch);
         }
     }
 }

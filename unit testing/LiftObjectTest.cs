@@ -11,7 +11,7 @@ namespace ProjectCowTest
     [TestClass]
     public class LiftObjectTest
     {
-        GameObjectsManager manager = new GameObjectsManager();
+        GameObjectsManager manager = new GameObjectsManager(new Random());
 
         [TestMethod]
         public void OriginalYTest()

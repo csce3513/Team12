@@ -30,15 +30,19 @@ namespace ProjectCowTest
             Spaceship spaceship = new Spaceship();
             spaceship.X = 49;
             spaceship.Width = 200;
-            Cow cow = new Cow(new Vector2(50, 500), 0, null);
+            GameObjectsManager manager = new GameObjectsManager(new Random());
+            manager.AddRandomObject();
 
             screen.SetField("spaceship", spaceship);
-            screen.SetField("cow", cow);
+            screen.SetField("gameObjectsManager", manager);
             screen.Invoke("OperateTractorBeam");
-            cow = (Cow)screen.GetField("cow");
-            cow.Update(new GameTime());
+            manager = (GameObjectsManager)screen.GetField("gameObjectsManager");
+            manager.Update(new GameTime());
 
-            Assert.IsTrue(cow.Position.Y < 500);
+            PrivateObject privateManager = new PrivateObject(manager);
+            List<LiftObject> liftObjects = (List<LiftObject>)privateManager.GetField("liftObjects");
+
+            Assert.IsTrue(liftObjects[0].Position.Y < 500);
         }
     }
 }

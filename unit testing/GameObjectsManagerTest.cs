@@ -14,7 +14,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void AddObjectTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager());
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
             manager.Invoke("AddObject", new LiftObjectTestClass(Vector2.Zero, 0, null));
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
 
@@ -24,7 +24,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void AddRandomObjectTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager());
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
             manager.Invoke("AddRandomObject");
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
 

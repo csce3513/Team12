@@ -45,10 +45,23 @@ namespace ProjectCow
             theSpriteBatch.Draw(mSpriteTexture, Position, Color.White);
         }
 
-        public void setBackgroundImage()
+        public void LoadNextBackground()
         {
-            Random random = new Random();
-            num = random.Next(0, 3);
+            if (num < 2)
+                num++;
+            else
+                num = 0;
+
+            LoadContent(manager);
+        }
+
+        public void LoadPreviousBackground()
+        {
+            if (num > 0)
+                num--;
+            else
+                num = 2;
+
             LoadContent(manager);
         }
 

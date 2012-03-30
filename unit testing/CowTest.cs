@@ -14,7 +14,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void MoveRandomlyTest()
         {
-            PrivateObject cow = new PrivateObject(new Cow(new Vector2(100, 300), 0, null));
+            PrivateObject cow = new PrivateObject(new Cow(new Vector2(100, 300), 0, null, new Random()));
             cow.Invoke("MoveRandomly", new GameTime());
             TimeSpan duration = (TimeSpan) cow.GetField("actionDuration");
             Assert.IsTrue(duration.Ticks > 0);

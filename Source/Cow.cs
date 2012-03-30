@@ -21,10 +21,10 @@
 
         private readonly int MOVE_SPEED = 1;
 
-        public Cow(Vector2 position, float resistance, GameObjectsManager manager)
+        public Cow(Vector2 position, float resistance, GameObjectsManager manager, Random random)
             : base(position, resistance, manager)
         {
-            random = new Random();
+            this.random = random;
             actionDuration = new TimeSpan();
 
             moveLeft = false;
