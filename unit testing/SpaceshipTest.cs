@@ -68,7 +68,7 @@
             spaceship.LeftBoundary = 0;
             spaceship.MoveLeft();
 
-            Assert.AreEqual(0, spaceship.X);
+            Assert.AreEqual(-spaceship.Speed, spaceship.X);
         }
 
         [TestMethod]

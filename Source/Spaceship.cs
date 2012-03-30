@@ -75,13 +75,13 @@ namespace ProjectCow
         // Boundary cases
         public void MoveLeft()
         {
-            if (position.X > LeftBoundary)
+            if (position.X >= LeftBoundary)
                 position.X -= Speed;
         }
 
         public void MoveRight()
         {
-            if (position.X < RightBoundary)
+            if (position.X + Width < RightBoundary)
                 position.X += Speed;
         }
 

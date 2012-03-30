@@ -9,6 +9,7 @@
     {
         // Gravity positive since Y increases as you go down
         protected readonly float GRAVITY = .98f;
+        private readonly int POINTS = 1;
 
         // Original y used to determine where the object will land when dropped
         public float OriginalY { get; protected set; }
@@ -16,18 +17,19 @@
         protected Vector2 speed;
         public float Width { get; set; }
         public float Height { get; set; }
+        public int Points { get { return POINTS; } }
 
         // How much it resists the pull
         protected float resistance;
 
-        public LiftObject(Vector2 position, float resistance)
+        public LiftObject(Vector2 position, float resistance, GameObjectsManager manager) : base(manager)
         {
             OriginalY = position.Y;
             Position = position;
             this.resistance = resistance;
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             speed.Y += this.GRAVITY;
             this.Position += speed;

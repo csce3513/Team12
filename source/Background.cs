@@ -16,6 +16,8 @@ namespace ProjectCow
         //The texture object used when drawing the sprite
         private Texture2D mSpriteTexture;
 
+        private ContentManager manager;
+
         string[] names = new string[3];
         string name;
         int num;
@@ -34,6 +36,7 @@ namespace ProjectCow
         public void LoadContent(ContentManager theContentManager)
         {
             mSpriteTexture = theContentManager.Load<Texture2D>(names[num]);
+            manager = theContentManager;
         }
 
         //Draw the sprite to the screen
@@ -42,10 +45,24 @@ namespace ProjectCow
             theSpriteBatch.Draw(mSpriteTexture, Position, Color.White);
         }
 
-        public void setBackgroundImage()
+        public void LoadNextBackground()
         {
-            Random random = new Random();
-            num = random.Next(0, 3);
+            if (num < 2)
+                num++;
+            else
+                num = 0;
+
+            LoadContent(manager);
+        }
+
+        public void LoadPreviousBackground()
+        {
+            if (num > 0)
+                num--;
+            else
+                num = 2;
+
+            LoadContent(manager);
         }
 
         public string getBackgroundImage()

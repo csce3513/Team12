@@ -9,14 +9,16 @@
         public Vector2 Position { get; set; }
         public float Scale { get; set; }
         protected Texture2D image;
+        protected GameObjectsManager manager;
 
-        public GameObject()
+        public GameObject(GameObjectsManager manager)
         {
+            this.manager = manager;
             Scale = 1.0f;
         }
 
         public abstract void LoadContent(ContentManager content);
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
         public void Draw(SpriteBatch spriteBatch)
         {
