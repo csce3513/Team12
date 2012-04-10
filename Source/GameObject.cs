@@ -20,7 +20,7 @@
         public abstract void LoadContent(ContentManager content);
         public abstract void Update(GameTime gameTime);
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, Position, null, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, 0);
         }

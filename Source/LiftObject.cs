@@ -18,6 +18,7 @@
         public float Width { get; set; }
         public float Height { get; set; }
         public int Points { get { return POINTS; } }
+        public bool Captured { get; set; }
 
         // How much it resists the pull
         protected float resistance;
@@ -27,6 +28,7 @@
             OriginalY = position.Y;
             Position = position;
             this.resistance = resistance;
+            Captured = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -49,9 +51,11 @@
                 Vector2 objectCenter = new Vector2(Position.X + Width / 2, Position.Y + Height / 2);
                 Vector2 direction = spaceshipCenter - objectCenter;
                 direction.Normalize();
-                if (direction.Y > 0)
-                    // Add logic for capturing here
+                if (Position.Y <= spaceshipCenter.Y + 80)
+                {
+                    Captured = true;
                     speed.Y = 0;
+                }
                 else
                     speed.Y += direction.Y * pullAcceleration + resistance;
 

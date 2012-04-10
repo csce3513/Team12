@@ -15,10 +15,12 @@
     {
         private Background background;
         private Spaceship spaceship;
-        private SpaceshipInputManager spaceshipInput;
+        private InputManager input;
+        private SpaceshipController controller;
         private GameObjectsManager gameObjectsManager;
+        private GameInfo hud;
         // Have one random to pass on to all objects
-        // or each random call will be same value
+        // or else each random call will be same value
         private Random random;
 
         public ScreenManager Manager { get; set; }
@@ -27,12 +29,14 @@
         {
             background = new Background();
             spaceship = new Spaceship();
-            spaceshipInput = new SpaceshipInputManager(spaceship);
+            input = new InputManager();
+            controller = new SpaceshipController(spaceship, input);
             random = new Random();
             gameObjectsManager = new GameObjectsManager(random);
             gameObjectsManager.AddRandomObject();
             gameObjectsManager.AddRandomObject();
             gameObjectsManager.AddRandomObject();
+            hud = new GameInfo();
         }
 
         public void LoadContent(ContentManager content)
@@ -42,14 +46,18 @@
                 background.LoadContent(content);
                 gameObjectsManager.LoadContent(content);
                 spaceship.LoadContent(content);
+                hud.LoadContent(content);
             }
         }
 
+        // Operate the tractor beam
         private void OperateTractorBeam()
         {
-            gameObjectsManager.LiftObjects(spaceship);
+            if (gameObjectsManager.LiftObjects(spaceship))
+                hud.Score++;
         }
 
+        // Determine which beam is being used and call the respective function
         private String DetermineBeam()
         {
             if (spaceship.CurrentBeam.Name == "Tractor Beam")
@@ -60,23 +68,35 @@
 
         public void Update(GameTime gameTime)
         {
-            spaceshipInput.Update();
+            if (random.Next(0, 100) == 0)
+                gameObjectsManager.AddRandomObject();
+
+            input.Update();
+            controller.Update();
             spaceship.Update();
             gameObjectsManager.Update(gameTime);
 
+            // Check if spaceship tractor beam is on
             if (spaceship.BeamOn)
                 DetermineBeam();
 
+            // Check if spaceship hits boundary of screen
             if (spaceship.X + spaceship.Width >= spaceship.RightBoundary)
             {
                 background.LoadNextBackground();
                 spaceship.X = 0;
+                gameObjectsManager.ShiftObjectsLeft();
             }
             else if (spaceship.X < spaceship.LeftBoundary)
             {
                 background.LoadPreviousBackground();
                 spaceship.X = spaceship.RightBoundary - spaceship.Width - 1;
+                gameObjectsManager.ShiftObjectsRight();
             }
+
+            // Check input to call menu
+            if (input.IsPKeyPressed())
+                Manager.PushScreen(new MenuScreen());
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -84,6 +104,7 @@
             background.Draw(spriteBatch);
             spaceship.Draw(spriteBatch);
             gameObjectsManager.Draw(spriteBatch);
+            hud.Draw(spriteBatch);
         }
     }
 }

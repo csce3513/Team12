@@ -18,15 +18,21 @@ namespace ProjectCow
 
         private ContentManager manager;
 
-        string[] names = new string[3];
+        // Name for background
+        string[] names = new string[6];
+        // Name of current background
         string name;
+        // Index of current background
         int num;
 
         public Background()
         {
-            names[0] = "farm1";
-            names[1] = "farm2";
-            names[2] = "farm3";
+            names[0] = "mountaings";
+            names[1] = "mountaings2";
+            names[2] = "mountaings3";
+            names[3] = "mountaings4";
+            names[4] = "mountaings5";
+            names[5] = "mountaings6";
 
             num = 0;
             name = names[0];
@@ -36,7 +42,10 @@ namespace ProjectCow
         public void LoadContent(ContentManager theContentManager)
         {
             mSpriteTexture = theContentManager.Load<Texture2D>(names[num]);
-            manager = theContentManager;
+
+            // Set manager only once
+            if(manager == null)
+                manager = theContentManager;
         }
 
         //Draw the sprite to the screen
@@ -47,7 +56,7 @@ namespace ProjectCow
 
         public void LoadNextBackground()
         {
-            if (num < 2)
+            if (num < 5)
                 num++;
             else
                 num = 0;
@@ -60,11 +69,12 @@ namespace ProjectCow
             if (num > 0)
                 num--;
             else
-                num = 2;
+                num = 5;
 
             LoadContent(manager);
         }
 
+        // Returns name of current background image
         public string getBackgroundImage()
         {
             return names[num];

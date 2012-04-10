@@ -28,12 +28,17 @@
             contentManager = content;
         }
 
+        // Add a random object off screen
         public void AddRandomObject()
         {
             // TODO: Implement randomness when more objects are created
 
-            // TODO: Replace min and max position values with real ones
-            Vector2 position = new Vector2(random.Next(0, 700), random.Next(380, 420));
+            Vector2 position = new Vector2(random.Next(0, 600), random.Next(380, 420));
+
+            if (random.Next(2) == 0)
+                position.X -= 720; // Object appears on previous screen
+            else
+                position.X += 720; // Object appears on next screen
 
             Cow cow = new Cow(position, 0, this, random);
             if (contentManager != null)
@@ -41,18 +46,47 @@
             AddObject(cow);
         }
 
+        // Shift all objects left one screen
+        public void ShiftObjectsLeft()
+        {
+            foreach (LiftObject liftObject in liftObjects)
+                liftObject.Position = new Vector2(liftObject.Position.X - 720, liftObject.Position.Y);
+        }
+
+        // Shift all objects right one screen
+        public void ShiftObjectsRight()
+        {
+            foreach (LiftObject liftObject in liftObjects)
+                liftObject.Position = new Vector2(liftObject.Position.X + 720, liftObject.Position.Y);
+        }
+
         public void AddObject(LiftObject liftObject)
         {
             liftObjects.Add(liftObject);
         }
 
-        public void LiftObjects(Spaceship spaceship)
+        public void RemoveObject(LiftObject liftObject)
+        {
+            liftObjects.Remove(liftObject);
+        }
+
+        // Returns true if a cow was captured
+        public bool LiftObjects(Spaceship spaceship)
         {
             Vector2 spaceshipCenter = new Vector2(spaceship.X + spaceship.Width / 2, spaceship.Y + spaceship.Height / 2);
 
             // Currently using spaceships width for beam width
-            foreach(LiftObject liftObject in liftObjects)
+            foreach (LiftObject liftObject in liftObjects)
+            {
                 liftObject.Lift(spaceshipCenter, spaceship.CurrentBeam.Force, spaceship.CurrentBeam.Position, spaceship.Width);
+                if (liftObject.Captured)
+                {
+                    RemoveObject(liftObject);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Update(GameTime gameTime)

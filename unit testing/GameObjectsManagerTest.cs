@@ -22,6 +22,18 @@ namespace ProjectCowTest
         }
 
         [TestMethod]
+        public void RemoveObjectTest()
+        {
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            manager.Invoke("AddObject", new LiftObjectTestClass(Vector2.Zero, 0, null));
+            List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
+
+            manager.Invoke("RemoveObject", liftObjects.Last());
+            liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
+            Assert.AreEqual(0, liftObjects.Count);
+        }
+
+        [TestMethod]
         public void AddRandomObjectTest()
         {
             PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
@@ -29,6 +41,23 @@ namespace ProjectCowTest
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
 
             Assert.AreEqual(1, liftObjects.Count);
+        }
+
+        [TestMethod]
+        public void LiftObjectsTest()
+        {
+            Spaceship spaceship = new Spaceship();
+            spaceship.X = 49;
+            spaceship.Width = 200;
+            GameObjectsManager manager = new GameObjectsManager(new Random());
+            manager.AddRandomObject();
+            manager.LiftObjects(spaceship);
+            manager.Update(new GameTime());
+
+            PrivateObject privateManager = new PrivateObject(manager);
+            List<LiftObject> liftObjects = (List<LiftObject>)privateManager.GetField("liftObjects");
+
+            Assert.IsTrue(liftObjects[0].Position.Y < 500);
         }
     }
 }

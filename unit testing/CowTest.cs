@@ -14,11 +14,13 @@ namespace ProjectCowTest
         [TestMethod]
         public void MoveRandomlyTest()
         {
+            // Test that it moves when on ground
             PrivateObject cow = new PrivateObject(new Cow(new Vector2(100, 300), 0, null, new Random()));
             cow.Invoke("MoveRandomly", new GameTime());
             TimeSpan duration = (TimeSpan) cow.GetField("actionDuration");
             Assert.IsTrue(duration.Ticks > 0);
 
+            // Test that it doesn't move when off ground
             cow.SetProperty("Position", new Vector2(100, 299));
             cow.Invoke("MoveRandomly", new GameTime());
             duration = (TimeSpan)cow.GetField("actionDuration");

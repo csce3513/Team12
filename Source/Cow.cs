@@ -19,6 +19,9 @@
         // Causes cow to move 3x as fast
         private bool frightened;
 
+        // Save direction it was facing
+        private SpriteEffects spriteEffect;
+
         private readonly int MOVE_SPEED = 1;
 
         public Cow(Vector2 position, float resistance, GameObjectsManager manager, Random random)
@@ -26,6 +29,7 @@
         {
             this.random = random;
             actionDuration = new TimeSpan();
+            spriteEffect = SpriteEffects.None;
 
             moveLeft = false;
             moveRight = false;
@@ -60,9 +64,15 @@
                         nextAction = random.Next(4);
 
                     if (nextAction == 0)
+                    {
                         moveLeft = true;
+                        spriteEffect = SpriteEffects.None;
+                    }
                     else if (nextAction == 1)
+                    {
                         moveRight = true;
+                        spriteEffect = SpriteEffects.FlipHorizontally;
+                    }
                     // If nextAction > 1 then stay still
 
                     int milliseconds = random.Next(500, 1000);
@@ -97,6 +107,11 @@
                 speed.X = 0;
             
             base.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, Position, null, Color.White, 0, Vector2.Zero, 1, spriteEffect, 0);
         }
     }
 }
