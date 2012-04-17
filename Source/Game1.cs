@@ -20,6 +20,7 @@ namespace ProjectCow
         SpriteBatch spriteBatch;
 
         ScreenManager screenManager;
+        public int MENUQUIT = 0;
 
         public Game1()
         {
@@ -27,6 +28,7 @@ namespace ProjectCow
             Content.RootDirectory = "Content";
 
             screenManager = new ScreenManager();
+            graphics.PreferredBackBufferWidth = 720;
         }
 
         /// <summary>
@@ -72,13 +74,18 @@ namespace ProjectCow
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (screenManager.Exit)
+                this.Exit();
+
+            if (MENUQUIT == 1)
                 this.Exit();
 
             // TODO: Add your update logic here
             screenManager.Update(gameTime);
             base.Update(gameTime);
+
         }
+
 
         /// <summary>
         /// This is called when the game should draw itself.

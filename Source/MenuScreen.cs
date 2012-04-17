@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectCow
 {
-    public class Background
+    public class MenuScreen : IScreen
     {
         //The current position of the Sprite
         public Vector2 Position = new Vector2(0,0);
@@ -17,30 +17,24 @@ namespace ProjectCow
         private Texture2D mSpriteTexture;
 
         private ContentManager manager;
+        private Background background;
+        private MenuInputManager menuInput;
+        public int picture = 0;
+        string[] names = new string[2];
 
-        string[] names = new string[6];
-        string name;
-        int num;
-        public int restart = 0;
-
-        public Background()
+        public MenuScreen(Background background)
         {
-            names[0] = "mountaings";
-            names[1] = "mountaings2";
-            names[2] = "mountaings3";
-            names[3] = "mountaings4";
-            names[4] = "mountaings5";
-            names[5] = "mountaings6";
-
-            num = 0;
-            name = names[0];
+            this.background = background;
+            names[0] = "menu";
+            names[1] = "intructions";
         }
 
         //Load the texture for the sprite using the Content Pipeline
         public void LoadContent(ContentManager theContentManager)
         {
-            mSpriteTexture = theContentManager.Load<Texture2D>(names[num]);
+            mSpriteTexture = theContentManager.Load<Texture2D>(names[picture]);
             manager = theContentManager;
+            menuInput = new MenuInputManager(this, Manager, background);
         }
 
         //Draw the sprite to the screen
@@ -49,38 +43,33 @@ namespace ProjectCow
             theSpriteBatch.Draw(mSpriteTexture, Position, Color.White);
         }
 
-        public void LoadNextBackground()
+        public void setMainMenu()
         {
-            if (num < 5)
-                num++;
-            else
-                num = 0;
-
+            picture = 0;
             LoadContent(manager);
         }
 
-        public void LoadPreviousBackground()
+        public void setInstructionMenu()
         {
-            if (num > 0)
-                num--;
-            else
-                num = 5;
-
+            picture = 1;
             LoadContent(manager);
-        }
-
-        public string getBackgroundImage()
-        {
-            return names[num];
         }
 
         public void Restart()
         {
-            if (restart == 0)
-            {
-                num = 0;
-                LoadContent(manager);
-            }
+            background.Restart(); 
         }
+
+        public void Update(GameTime gameTime)
+        {
+            menuInput.Update();
+        }
+
+        public int getPicture()
+        {
+            return picture;
+        }
+
+        public ScreenManager Manager { get; set; }
     }
 }

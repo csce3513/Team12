@@ -6,24 +6,19 @@
 
     public abstract class GameObject
     {
-        // Gravity positive since Y increases as you go down
-        protected readonly float GRAVITY = 9.8f;
-
-        // Original x used to determine where the object will land when dropped
-        public float OriginalX { get; protected set; }
         public Vector2 Position { get; set; }
+        public float Scale { get; set; }
         protected Texture2D image;
+        protected GameObjectsManager manager;
 
-        // Initialize position
-        public GameObject(Vector2 position)
+        public GameObject(GameObjectsManager manager)
         {
-            OriginalX = position.X;
-            Position = position;
+            this.manager = manager;
+            Scale = 1.0f;
         }
 
         public abstract void LoadContent(ContentManager content);
-        public abstract void Draw(SpriteBatch spriteBatch);
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
         public void Draw(SpriteBatch spriteBatch)
         {

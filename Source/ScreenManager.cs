@@ -15,6 +15,8 @@
     {
         public Stack<IScreen> Screens { get; private set; }
         public ContentManager Content { get; private set; }
+        public bool Exit { get; set; }
+        public int change = 0;
 
         public ScreenManager()
         {
@@ -24,16 +26,27 @@
         // Add a screen to the top of the stack.
         public void PushScreen(IScreen screen)
         {
-            screen.Manager = this;
-            screen.LoadContent(Content);
-            Screens.Push(screen);
+            if (Screens.Count == 0)
+            {
+                screen.Manager = this;
+                screen.LoadContent(Content);
+                Screens.Push(screen);
+            }
+            else if ((Screens.Count != 0) && (Screens.Peek() != screen))
+            {
+                screen.Manager = this;
+                screen.LoadContent(Content);
+                Screens.Push(screen);
+            }
         }
 
         // Remove the screen at the top of the stack.
         public void PopScreen()
         {
-            if (Screens.Count > 0)
+            if ((Screens.Count > 0) && (change == 0))
+            {
                 Screens.Pop();
+            }
         }
 
         // Set the content manager to pass to screens.
