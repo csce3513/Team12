@@ -10,13 +10,22 @@
 
     public class GameObjectsManager
     {
+        // List of liftable objects in game
         private List<LiftObject> liftObjects;
+
+        // List of objects to be removed and added
+        // This is so you can add and remove objects while looping through liftObjects
+        private List<GameObject> objectsToRemove;
+        private List<GameObject> objectsToAdd;
+
         private Random random;
         private ContentManager contentManager;
 
         public GameObjectsManager(Random random)
         {
             liftObjects = new List<LiftObject>();
+            objectsToRemove = new List<GameObject>();
+            objectsToAdd = new List<GameObject>();
             this.random = random;
         }
 
@@ -28,22 +37,45 @@
             contentManager = content;
         }
 
-        // Add a random object off screen
-        public void AddRandomObject()
+        // Add random cow off screen
+        public void AddRandomCow()
         {
-            // TODO: Implement randomness when more objects are created
-
-            Vector2 position = new Vector2(random.Next(0, 600), random.Next(380, 420));
+            Vector2 position = new Vector2(random.Next(0, 600), random.Next(360, 400));
 
             if (random.Next(2) == 0)
                 position.X -= 720; // Object appears on previous screen
             else
                 position.X += 720; // Object appears on next screen
 
-            Cow cow = new Cow(position, 0, this, random);
+            Cow cow = new Cow(position, random.Next(97) / 100.0f, this, random);
             if (contentManager != null)
                 cow.LoadContent(contentManager);
             AddObject(cow);
+        }
+
+        // Add random cow bomb off screen
+        public void AddRandomCowBomb()
+        {
+            Vector2 position = new Vector2(random.Next(0, 600), random.Next(360, 400));
+
+            if (random.Next(2) == 0)
+                position.X -= 720; // Object appears on previous screen
+            else
+                position.X += 720; // Object appears on next screen
+
+            CowBomb bomb = new CowBomb(position, 0, this);
+            if (contentManager != null)
+                bomb.LoadContent(contentManager);
+            AddObject(bomb);
+        }
+
+        // Add a random object off screen
+        public void AddRandomObject()
+        {
+            if (random.Next(2) == 0)
+                AddRandomCow();
+            else
+                AddRandomCowBomb();
         }
 
         // Shift all objects left one screen
@@ -62,16 +94,16 @@
 
         public void AddObject(LiftObject liftObject)
         {
-            liftObjects.Add(liftObject);
+            objectsToAdd.Add(liftObject);
         }
 
         public void RemoveObject(LiftObject liftObject)
         {
-            liftObjects.Remove(liftObject);
+            objectsToRemove.Add(liftObject);
         }
 
-        // Returns true if a cow was captured
-        public bool LiftObjects(Spaceship spaceship)
+        // Returns the captured object
+        public LiftObject LiftObjects(Spaceship spaceship)
         {
             Vector2 spaceshipCenter = new Vector2(spaceship.X + spaceship.Width / 2, spaceship.Y + spaceship.Height / 2);
 
@@ -82,15 +114,23 @@
                 if (liftObject.Captured)
                 {
                     RemoveObject(liftObject);
-                    return true;
+                    return liftObject;
                 }
             }
 
-            return false;
+            return null;
         }
 
         public void Update(GameTime gameTime)
         {
+            foreach (LiftObject liftObject in objectsToRemove)
+                liftObjects.Remove(liftObject);
+            objectsToRemove.Clear();
+
+            foreach (LiftObject liftObject in objectsToAdd)
+                liftObjects.Add(liftObject);
+            objectsToAdd.Clear();
+
             foreach(LiftObject liftObject in liftObjects)
                 liftObject.Update(gameTime);
         }

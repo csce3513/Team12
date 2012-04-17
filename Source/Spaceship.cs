@@ -13,7 +13,7 @@ namespace ProjectCow
 
     public class Spaceship
     {
-        private readonly Rectangle DEFAULT_BOUNDARY = new Rectangle(0, 0, 720, 480);
+        private readonly Rectangle DEFAULT_BOUNDARY = new Rectangle(0, 0, 720, 240);
 
         // All these variables could be organized better at a later time
         private Vector2 position;
@@ -49,7 +49,7 @@ namespace ProjectCow
             BeamOn = false;
             this.boundaries = DEFAULT_BOUNDARY;
             beams = new List<Beam>();
-            beams.Add(new TractorBeam(position));
+            beams.Add(new TractorBeam(new Vector2(position.X, position.Y + Height)));
             currentBeam = 0;
         }
 
@@ -61,7 +61,7 @@ namespace ProjectCow
             BeamOn = false;
             this.boundaries = boundaries;
             beams = new List<Beam>();
-            beams.Add(new TractorBeam(position));
+            beams.Add(new TractorBeam(new Vector2(position.X, position.Y + Height)));
             currentBeam = 0;
         }
 
@@ -100,7 +100,7 @@ namespace ProjectCow
         public void Update()
         {
             if (BeamOn)
-                beams[currentBeam].Update(position);
+                beams[currentBeam].Update(new Vector2(position.X, position.Y + Height / 2));
         }
 
         public void Draw(SpriteBatch spriteBatch)

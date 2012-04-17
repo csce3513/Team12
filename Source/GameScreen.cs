@@ -33,9 +33,6 @@
             controller = new SpaceshipController(spaceship, input);
             random = new Random();
             gameObjectsManager = new GameObjectsManager(random);
-            gameObjectsManager.AddRandomObject();
-            gameObjectsManager.AddRandomObject();
-            gameObjectsManager.AddRandomObject();
             hud = new GameInfo();
         }
 
@@ -53,8 +50,12 @@
         // Operate the tractor beam
         private void OperateTractorBeam()
         {
-            if (gameObjectsManager.LiftObjects(spaceship))
-                hud.Score++;
+            LiftObject liftObject = gameObjectsManager.LiftObjects(spaceship);
+            if (liftObject != null)
+            {
+                hud.Score += liftObject.Points;
+                hud.Health += liftObject.HealthModifier;
+            }
         }
 
         // Determine which beam is being used and call the respective function
@@ -66,10 +67,18 @@
             return spaceship.CurrentBeam.Name;
         }
 
+        private void GenerateRandomObjects()
+        {
+            if (random.Next(1000) < 20)
+                gameObjectsManager.AddRandomCow();
+
+            if (hud.Score >= 20 && random.Next(1000) < 5)
+                gameObjectsManager.AddRandomCowBomb();
+        }
+
         public void Update(GameTime gameTime)
         {
-            if (random.Next(0, 100) == 0)
-                gameObjectsManager.AddRandomObject();
+            GenerateRandomObjects();
 
             input.Update();
             controller.Update();

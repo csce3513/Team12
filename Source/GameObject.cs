@@ -3,6 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public abstract class GameObject
     {
@@ -10,6 +11,8 @@
         public float Scale { get; set; }
         protected Texture2D image;
         protected GameObjectsManager manager;
+        // How long the object stays in object manager
+        protected TimeSpan timeAlive;
 
         public GameObject(GameObjectsManager manager)
         {

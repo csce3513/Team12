@@ -9,26 +9,47 @@
     {
         // Gravity positive since Y increases as you go down
         protected readonly float GRAVITY = .98f;
-        private readonly int POINTS = 1;
 
         // Original y used to determine where the object will land when dropped
         public float OriginalY { get; protected set; }
 
+        // Bounding box for collision detection
+        public Rectangle boundingBox
+        {
+            get
+            {
+                return new Rectangle((int)Position.X, (int)Position.Y, (int)Width, (int)Height);
+            }
+
+            set
+            {
+                Position = new Vector2(value.X, value.Y);
+                Width = value.Width;
+                Height = value.Height;
+            }
+        }
+
         protected Vector2 speed;
         public float Width { get; set; }
         public float Height { get; set; }
-        public int Points { get { return POINTS; } }
+        // How much points the object is worth
+        public int Points { get; set; }
+        // How much health is added to spaceship
+        public int HealthModifier { get; set; }
+        // Bool value to determine if object is captured
         public bool Captured { get; set; }
 
         // How much it resists the pull
         protected float resistance;
 
-        public LiftObject(Vector2 position, float resistance, GameObjectsManager manager) : base(manager)
+        public LiftObject(Vector2 position, float resistance, GameObjectsManager manager, int points, int healthModifier) : base(manager)
         {
             OriginalY = position.Y;
             Position = position;
             this.resistance = resistance;
             Captured = false;
+            Points = points;
+            HealthModifier = healthModifier;
         }
 
         public override void Update(GameTime gameTime)
@@ -59,20 +80,21 @@
                 else
                     speed.Y += direction.Y * pullAcceleration + resistance;
 
-                speed.X += direction.X * pullAcceleration + resistance;
+                speed.X += direction.X * (pullAcceleration - resistance);
             }
         }
 
-        // Check if object is in beam's range. Only checking width so far.
+        // Check if object is below and in beam's range.
         private bool IsInBeamRange(Vector2 beamPosition, int beamWidth)
         {
             // Edges of object
             float leftEdge = this.Position.X;
             float rightEdge = leftEdge + this.Width;
 
-            if ((leftEdge <= beamPosition.X + beamWidth && leftEdge >= beamPosition.X) ||
+            if ( Position.Y >= beamPosition.Y &&
+                ((leftEdge <= beamPosition.X + beamWidth && leftEdge >= beamPosition.X) ||
                 (rightEdge >= beamPosition.X && rightEdge <= beamPosition.X + beamWidth) ||
-                (leftEdge <= beamPosition.X && rightEdge >= beamPosition.X + beamWidth))
+                (leftEdge <= beamPosition.X && rightEdge >= beamPosition.X + beamWidth)))
                 return true;
             else
                 return false;

@@ -10,8 +10,15 @@
 
     public class Cow : LiftObject
     {
+        private readonly TimeSpan MAX_ALIVE_TIME = TimeSpan.FromSeconds(60);
+
         private Random random;
         private TimeSpan actionDuration;
+
+        // Frightened image (currently angry image)
+        private Texture2D frightenedImage;
+        // Current image to display
+        private Texture2D currentImage;
 
         // Actions
         private bool moveLeft;
@@ -23,13 +30,15 @@
         private SpriteEffects spriteEffect;
 
         private readonly int MOVE_SPEED = 1;
+        private int currentMoveSpeed;
 
         public Cow(Vector2 position, float resistance, GameObjectsManager manager, Random random)
-            : base(position, resistance, manager)
+            : base(position, resistance, manager, 1, 1)
         {
             this.random = random;
             actionDuration = new TimeSpan();
             spriteEffect = SpriteEffects.None;
+            currentMoveSpeed = MOVE_SPEED;
 
             moveLeft = false;
             moveRight = false;
@@ -39,8 +48,10 @@
         public override void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("cartooncow2");
+            frightenedImage = content.Load<Texture2D>("angrycartooncow");
             Width = image.Width;
             Height = image.Height;
+            currentImage = image;
         }
 
         private void MoveRandomly(GameTime gameTime)
@@ -81,37 +92,43 @@
             }
             else
             {
+                // Object is being lifted so be frightened and don't move
                 moveLeft = false;
                 moveRight = false;
                 frightened = true;
+                currentMoveSpeed = MOVE_SPEED * 3;
+                currentImage = frightenedImage;
                 actionDuration = TimeSpan.Zero;
             }
         }
 
-        public override void Update(GameTime gameTime)
+        // Move according to current action
+        private void Move()
         {
-            int moveSpeed;
-
-            if (frightened)
-                moveSpeed = MOVE_SPEED * 3;
-            else
-                moveSpeed = MOVE_SPEED;
-
-            MoveRandomly(gameTime);
-
             if (moveLeft)
-                speed.X -= moveSpeed;
+                speed.X -= currentMoveSpeed;
             else if (moveRight)
-                speed.X += moveSpeed;
+                speed.X += currentMoveSpeed;
             else if (Position.Y == OriginalY)
                 speed.X = 0;
-            
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            MoveRandomly(gameTime);
+            Move();
+
             base.Update(gameTime);
+
+            // Remove object after a certain amount of time if it's off screen
+            timeAlive += gameTime.ElapsedGameTime;
+            if (timeAlive >= MAX_ALIVE_TIME && (Position.X < -Width || Position.X > 720))
+                manager.RemoveObject(this);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, Position, null, Color.White, 0, Vector2.Zero, 1, spriteEffect, 0);
+            spriteBatch.Draw(currentImage, Position, null, Color.White, 0, Vector2.Zero, 1, spriteEffect, 0);
         }
     }
 }

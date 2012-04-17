@@ -12,6 +12,16 @@ namespace ProjectCowTest
     public class CowTest
     {
         [TestMethod]
+        public void MoveTest()
+        {
+            Cow cow = new Cow(Vector2.Zero, 0, null, null);
+            PrivateObject cowObject = new PrivateObject(cow);
+            cowObject.SetField("moveRight", true);
+            cowObject.Invoke("Move");
+            Assert.IsTrue(((Vector2)cowObject.GetField("speed")).X > 0);
+        }
+
+        [TestMethod]
         public void MoveRandomlyTest()
         {
             // Test that it moves when on ground

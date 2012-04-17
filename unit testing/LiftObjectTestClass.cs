@@ -7,7 +7,7 @@
     public class LiftObjectTestClass : LiftObject
     {
         public LiftObjectTestClass(Vector2 position, float resistance, GameObjectsManager manager)
-            : base(position, resistance, manager)
+            : base(position, resistance, manager, 0, 0)
         {
         }
 

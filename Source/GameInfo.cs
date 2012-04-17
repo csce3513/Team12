@@ -14,12 +14,26 @@
     public class GameInfo
     {
         public int Score { get; set; }
-        public int Health { get; set; }
+        public int Health
+        {
+            get
+            {
+                return health;
+            }
+            set
+            {
+                if (value > MaxHealth)
+                    health = 500;
+                else
+                    health = value;
+            }
+        }
         public int MaxHealth { get; set; }
 
         private SpriteFont font;
         private Vector2 scorePosition;
         private Vector2 healthPosition;
+        private int health;
 
         public GameInfo()
         {
