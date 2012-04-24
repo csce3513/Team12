@@ -39,6 +39,8 @@
             actionDuration = new TimeSpan();
             spriteEffect = SpriteEffects.None;
             currentMoveSpeed = MOVE_SPEED;
+            Width = 80;
+            Height = 60;
 
             moveLeft = false;
             moveRight = false;
@@ -49,8 +51,6 @@
         {
             image = content.Load<Texture2D>("cartooncow2");
             frightenedImage = content.Load<Texture2D>("angrycartooncow");
-            Width = image.Width;
-            Height = image.Height;
             currentImage = image;
         }
 
@@ -128,7 +128,7 @@
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(currentImage, Position, null, Color.White, 0, Vector2.Zero, 1, spriteEffect, 0);
+            spriteBatch.Draw(currentImage, BoundBox, null, Color.White, 0, Vector2.Zero, spriteEffect, 0);
         }
     }
 }

@@ -41,10 +41,21 @@ namespace ProjectCow
         public int RightBoundary { get { return boundaries.Right; } set { boundaries.Width = value - boundaries.X; } }
         public int TopBoundary { get { return boundaries.Top; } set { boundaries.Y = value; } }
         public int BottomBoundary { get { return boundaries.Bottom; } set { boundaries.Height = value - boundaries.Y; } }
+        public Vector2 Position { get { return position; } set { position = value; } }
+
+        public Rectangle BoundBox
+        {
+            get
+            {
+                return new Rectangle((int)X, (int)Y, Width, Height);
+            }
+        }
 
         public Spaceship()
         {
             position = Vector2.Zero;
+            Width = 150;
+            Height = 125;
             Speed = 3;
             BeamOn = false;
             this.boundaries = DEFAULT_BOUNDARY;
@@ -57,6 +68,8 @@ namespace ProjectCow
         public Spaceship(Rectangle boundaries)
         {
             position = Vector2.Zero;
+            Width = 150;
+            Height = 50;
             Speed = 3;
             BeamOn = false;
             this.boundaries = boundaries;
@@ -68,8 +81,6 @@ namespace ProjectCow
         public void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("spaceship");
-            Width = image.Width;
-            Height = image.Height;
         }
 
         // Boundary cases
@@ -93,7 +104,7 @@ namespace ProjectCow
 
         public void MoveDown()
         {
-            if (position.Y < BottomBoundary)
+            if (position.Y + Height< BottomBoundary)
                 position.Y += Speed; 
         }
 
@@ -105,7 +116,7 @@ namespace ProjectCow
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, position, Color.White);
+            spriteBatch.Draw(image, BoundBox, Color.White);
             if (BeamOn)
                 beams[currentBeam].Draw(spriteBatch);
         }

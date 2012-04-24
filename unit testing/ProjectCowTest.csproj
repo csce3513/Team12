@@ -63,6 +63,7 @@
     <Compile Include="ScreenManagerTest.cs" />
     <Compile Include="SpaceshipControllerTest.cs" />
     <Compile Include="SpaceshipTest.cs" />
+    <Compile Include="TankTest.cs" />
     <Compile Include="TractorBeamTest.cs" />
   </ItemGroup>
   <ItemGroup>

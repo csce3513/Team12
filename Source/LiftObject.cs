@@ -4,6 +4,7 @@
     using Microsoft.Xna.Framework.Input;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public abstract class LiftObject : GameObject
     {
@@ -13,25 +14,7 @@
         // Original y used to determine where the object will land when dropped
         public float OriginalY { get; protected set; }
 
-        // Bounding box for collision detection
-        public Rectangle boundingBox
-        {
-            get
-            {
-                return new Rectangle((int)Position.X, (int)Position.Y, (int)Width, (int)Height);
-            }
-
-            set
-            {
-                Position = new Vector2(value.X, value.Y);
-                Width = value.Width;
-                Height = value.Height;
-            }
-        }
-
         protected Vector2 speed;
-        public float Width { get; set; }
-        public float Height { get; set; }
         // How much points the object is worth
         public int Points { get; set; }
         // How much health is added to spaceship
@@ -41,6 +24,9 @@
 
         // How much it resists the pull
         protected float resistance;
+
+        // How long the object stays in object manager
+        protected TimeSpan timeAlive;
 
         public LiftObject(Vector2 position, float resistance, GameObjectsManager manager, int points, int healthModifier) : base(manager)
         {

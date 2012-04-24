@@ -14,7 +14,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void AddObjectTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Spaceship(), new Random()));
             manager.Invoke("AddObject", new LiftObjectTestClass(Vector2.Zero, 0, null));
             manager.Invoke("Update", new GameTime());
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
@@ -25,7 +25,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void RemoveObjectTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Spaceship(), new Random()));
             manager.Invoke("AddObject", new LiftObjectTestClass(Vector2.Zero, 0, null));
             manager.Invoke("Update", new GameTime());
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
@@ -39,7 +39,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void AddRandomObjectTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Spaceship(), new Random()));
             manager.Invoke("AddRandomObject");
             manager.Invoke("Update", new GameTime());
             List<LiftObject> liftObjects = (List<LiftObject>)manager.GetField("liftObjects");
@@ -53,7 +53,7 @@ namespace ProjectCowTest
             Spaceship spaceship = new Spaceship();
             spaceship.X = 49;
             spaceship.Width = 200;
-            GameObjectsManager manager = new GameObjectsManager(new Random());
+            GameObjectsManager manager = new GameObjectsManager(new Spaceship(), new Random());
             manager.AddRandomObject();
             manager.LiftObjects(spaceship);
             manager.Update(new GameTime());
@@ -67,7 +67,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void ShiftObjectsLeftTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Spaceship(), new Random()));
             manager.Invoke("AddObject", new Cow(Vector2.Zero, 0, null, new Random(2)));
             manager.Invoke("Update", new GameTime());
             manager.Invoke("ShiftObjectsLeft");
@@ -79,7 +79,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void ShiftObjectsRightTest()
         {
-            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Random()));
+            PrivateObject manager = new PrivateObject(new GameObjectsManager(new Spaceship(), new Random()));
             manager.Invoke("AddObject", new Cow(Vector2.Zero, 0, null, new Random(2)));
             manager.Invoke("Update", new GameTime());
             manager.Invoke("ShiftObjectsRight");
@@ -91,7 +91,7 @@ namespace ProjectCowTest
         [TestMethod]
         public void CheckCollisionTest()
         {
-            GameObjectsManager gameObjectsManager = new GameObjectsManager(new Random());
+            GameObjectsManager gameObjectsManager = new GameObjectsManager(new Spaceship(), new Random());
             Cow cow1 = new Cow(new Vector2(0, 500), 0, gameObjectsManager, new Random());
 
             Assert.IsTrue(true);

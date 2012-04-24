@@ -16,13 +16,18 @@
         public CowBomb(Vector2 position, float resistance, GameObjectsManager manager)
             : base(position, resistance, manager, 0, -10) // Last two digits are score and health modifiers
         {
+            Width = 80;
+            Height = 60;
         }
 
         public override void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("bombercow");
-            Width = image.Width;
-            Height = image.Height;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, BoundBox, Color.White);
         }
     }
 }
