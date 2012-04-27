@@ -92,9 +92,19 @@ namespace ProjectCowTest
         public void CheckCollisionTest()
         {
             GameObjectsManager gameObjectsManager = new GameObjectsManager(new Spaceship(), new Random());
-            Cow cow1 = new Cow(new Vector2(0, 500), 0, gameObjectsManager, new Random());
+            SmallRocket rocket = new SmallRocket(new Vector2(5, 400), gameObjectsManager);
+            gameObjectsManager.AddObject(rocket);
+            gameObjectsManager.Update(new GameTime());
+            int hp = gameObjectsManager.CheckCollisions();
 
-            Assert.IsTrue(true);
+            Assert.IsFalse(hp < 0);
+
+            SmallRocket rocket2 = new SmallRocket(new Vector2(5, 50), gameObjectsManager);
+            gameObjectsManager.AddObject(rocket2);
+            gameObjectsManager.Update(new GameTime());
+            hp = gameObjectsManager.CheckCollisions();
+
+            Assert.IsTrue(hp < 0);
         }
     }
 }

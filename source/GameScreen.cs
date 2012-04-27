@@ -96,6 +96,8 @@
             controller.Update();
             gameObjectsManager.Update(gameTime);
 
+            hud.Health += gameObjectsManager.CheckCollisions();
+
             // Check if spaceship tractor beam is on
             if (spaceship.BeamOn)
                 DetermineBeam();

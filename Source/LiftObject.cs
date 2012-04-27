@@ -15,6 +15,7 @@
         public float OriginalY { get; protected set; }
 
         protected Vector2 speed;
+        public Vector2 Speed { get { return speed; } set { speed = value; } }
         // How much points the object is worth
         public int Points { get; set; }
         // How much health is added to spaceship
@@ -68,6 +69,19 @@
 
                 speed.X += direction.X * (pullAcceleration - resistance);
             }
+        }
+
+        // Check collision with other lift objects
+        public bool IsCollided(LiftObject liftObject)
+        {
+            if (liftObject.Position.Y == liftObject.OriginalY)
+            {
+                // Create new box that's 1/2 size
+                Rectangle softBoundBox = new Rectangle((int)(liftObject.BoundBox.X + liftObject.Width / 4), (int)(liftObject.BoundBox.Y + liftObject.Height / 4), (int)(liftObject.Width / 2), (int)(liftObject.Height / 2));
+                return BoundBox.Intersects(softBoundBox);
+            }
+            else
+                return false;
         }
 
         // Check if object is below and in beam's range.

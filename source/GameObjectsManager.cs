@@ -50,7 +50,7 @@
             while(liftObjects.Count < 12)
             {
                 Vector2 position = new Vector2(random.Next(-720, 1440), random.Next(360, 400));
-                liftObjects.Add(new Cow(position, random.Next(97) / 100.0f, this, random));
+                liftObjects.Add(new Cow(position, 0.8f, this, random));
             }
         }
 
@@ -64,7 +64,7 @@
             else
                 position.X += 1440; // Object appears on 2 screens ahead
 
-            Cow cow = new Cow(position, random.Next(97) / 100.0f, this, random);
+            Cow cow = new Cow(position, 0.8f, this, random);
             AddObject(cow);
         }
 
@@ -110,6 +110,8 @@
         {
             foreach (LiftObject liftObject in liftObjects)
                 liftObject.Position = new Vector2(liftObject.Position.X - 720, liftObject.Position.Y);
+            foreach (Projectile projectile in projectiles)
+                projectile.Position = new Vector2(projectile.Position.X - 720, projectile.Position.Y);
         }
 
         // Shift all objects right one screen
@@ -117,6 +119,8 @@
         {
             foreach (LiftObject liftObject in liftObjects)
                 liftObject.Position = new Vector2(liftObject.Position.X + 720, liftObject.Position.Y);
+            foreach (Projectile projectile in projectiles)
+                projectile.Position = new Vector2(projectile.Position.X + 720, projectile.Position.Y);
         }
 
         public void AddObject(GameObject gameObject)
@@ -148,6 +152,51 @@
             }
 
             return null;
+        }
+
+        // Checks for all collisions and return the amount of damage to spaceship
+        public int CheckCollisions()
+        {
+            // First check collisions between cows and tanks
+
+            // Separate cows and tanks
+            List<LiftObject> fallingObjects = new List<LiftObject>();
+            List<Tank> tanks = new List<Tank>();
+
+            foreach(LiftObject liftObject in liftObjects)
+            {
+                if (liftObject.Speed.Y > 15)
+                    fallingObjects.Add(liftObject);
+                else if (liftObject.GetType().Name == "Tank" && liftObject.Position.X > -liftObject.Width && liftObject.Position.X < 720)
+                    tanks.Add((Tank)liftObject);
+            }
+
+            foreach (LiftObject fallingObject in fallingObjects)
+            {
+                foreach (Tank tank in tanks)
+                {
+                    if (fallingObject.IsCollided(tank))
+                    {
+                        RemoveObject(tank);
+                        fallingObject.Speed = new Vector2(fallingObject.Speed.X, -fallingObject.Speed.Y);
+                        break;
+                    }
+                }
+            }
+
+            // Now check collision between projectiles and spaceship
+            int healthModifier = 0;
+            foreach (Projectile projectile in projectiles)
+            {
+                Rectangle softBoundBox = new Rectangle((int)(projectile.BoundBox.X + projectile.Width / 8), (int)(projectile.BoundBox.Y + projectile.Height / 8), (int)(3 * projectile.Width / 4), (int)(3 * projectile.Height / 4));
+                if (Spaceship.BoundBox.Intersects(softBoundBox))
+                {
+                    healthModifier += projectile.HealthModifier;
+                    RemoveObject(projectile);
+                }
+            }
+
+            return healthModifier;
         }
 
         public void Update(GameTime gameTime)

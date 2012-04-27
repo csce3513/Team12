@@ -72,5 +72,18 @@ namespace ProjectCowTest
 
             Assert.IsTrue(cow.Captured);
         }
+
+        [TestMethod]
+        public void CollisionTest()
+        {
+            Cow cow = new Cow(new Vector2(0, 100), 0, null, null);
+            Tank tank = new Tank(new Vector2(0, 420), null, null);
+
+            Assert.IsFalse(cow.IsCollided(tank));
+
+            cow.Position = new Vector2(0, 400);
+
+            Assert.IsTrue(cow.IsCollided(tank));
+        }
     }
 }
