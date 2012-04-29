@@ -11,7 +11,7 @@ namespace ProjectCowTest
     [TestClass]
     public class LiftObjectTest
     {
-        GameObjectsManager manager = new GameObjectsManager(new Random());
+        GameObjectsManager manager = new GameObjectsManager(new Spaceship(), new Random());
 
         [TestMethod]
         public void OriginalYTest()
@@ -64,6 +64,26 @@ namespace ProjectCowTest
             cow.Update(new GameTime());
 
             Assert.IsTrue(cow.Position.Y == 400);
+
+            // Test lift that captures cow
+            cow = new LiftObjectTestClass(Vector2.Zero, 0, manager);
+            cow.Lift(Vector2.Zero, 15, Vector2.Zero, 500);
+            cow.Update(new GameTime());
+
+            Assert.IsTrue(cow.Captured);
+        }
+
+        [TestMethod]
+        public void CollisionTest()
+        {
+            Cow cow = new Cow(new Vector2(0, 100), 0, null, null);
+            Tank tank = new Tank(new Vector2(0, 420), null, null);
+
+            Assert.IsFalse(cow.IsCollided(tank));
+
+            cow.Position = new Vector2(0, 400);
+
+            Assert.IsTrue(cow.IsCollided(tank));
         }
     }
 }

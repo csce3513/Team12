@@ -16,11 +16,11 @@ namespace ProjectCowTest
             GameInfo info = new GameInfo();
             info.Health += 1000;
 
-            Assert.AreEqual(500, info.Health);
+            Assert.AreEqual(100, info.Health);
 
             info.Health -= 50;
 
-            Assert.AreEqual(450, info.Health);
+            Assert.AreEqual(50, info.Health);
         }
     }
 }
