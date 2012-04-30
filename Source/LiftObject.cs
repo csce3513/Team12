@@ -1,63 +1,103 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace ufogame
+﻿namespace ProjectCow
 {
-    class LiftObject : InteractObject
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using System;
+
+    public abstract class LiftObject : GameObject
     {
-        const int MOVE_UP = -1;
-        const int MOVE_DOWN = 1;
-        const int MOVE_LEFT = -1;
-        const int MOVE_RIGHT = 1;
+        // Gravity positive since Y increases as you go down
+        protected readonly float GRAVITY = .98f;
 
-      
-        Vector2 direction = Vector2.Zero;
-        Vector2 speed = Vector2.Zero;
-        KeyboardState prevkeystate;
+        // Original y used to determine where the object will land when dropped
+        public float OriginalY { get; protected set; }
 
+        protected Vector2 speed;
+        public Vector2 Speed { get { return speed; } set { speed = value; } }
+        // How much points the object is worth
+        public int Points { get; set; }
+        // How much health is added to spaceship
+        public int HealthModifier { get; set; }
+        // Bool value to determine if object is captured
+        public bool Captured { get; set; }
 
-        public void UpdateIAO(GameTime gametime)
+        // How much it resists the pull
+        protected float resistance;
+
+        // How long the object stays in object manager
+        protected TimeSpan timeAlive;
+
+        public LiftObject(Vector2 position, float resistance, GameObjectsManager manager, int points, int healthModifier) : base(manager)
         {
-            KeyboardState curkeystate = Keyboard.GetState();
-            UpdateMoveIAO(curkeystate);
-            prevkeystate = curkeystate;
-            base.UpdateIAO(gametime, speed, direction);
+            OriginalY = position.Y;
+            Position = position;
+            this.resistance = resistance;
+            Captured = false;
+            Points = points;
+            HealthModifier = healthModifier;
         }
 
-        private void UpdateMoveIAO(KeyboardState curkeystate)
+        public override void Update(GameTime gameTime)
         {
-           
-                speed = Vector2.Zero;
-                direction = Vector2.Zero;
+            speed.Y += this.GRAVITY;
+            this.Position += speed;
+            if (Position.Y >= OriginalY)
+            {
+                speed.Y = 0;
+                speed.X = 0;
+                Position = new Vector2(Position.X, OriginalY);
+            }
+        }
 
-                if (curkeystate.IsKeyDown(Keys.Space) == true)
+        public void Lift(Vector2 spaceshipCenter, float pullAcceleration, Vector2 beamPosition, int beamWidth)
+        {
+            if (IsInBeamRange(beamPosition, beamWidth))
+            {
+                // Algorithm to pull the object to center of spaceship at given acceleration
+                Vector2 objectCenter = new Vector2(Position.X + Width / 2, Position.Y + Height / 2);
+                Vector2 direction = spaceshipCenter - objectCenter;
+                direction.Normalize();
+                if (Position.Y <= spaceshipCenter.Y + 80)
                 {
-                    speed.Y = 160;
-                    direction.Y = MOVE_UP;
-                    scale -= 0.01f;
+                    Captured = true;
+                    speed.Y = 0;
                 }
                 else
-                {
-                    if (position.Y < 350)
-                    {
-                        speed.Y = 160;
-                        direction.Y = MOVE_DOWN;
-                        scale += 0.01f;
-                    }
-                }
-                
+                    speed.Y += direction.Y * pullAcceleration + resistance;
+
+                speed.X += direction.X * (pullAcceleration - resistance);
+            }
         }
 
+        // Check collision with other lift objects
+        public bool IsCollided(LiftObject liftObject)
+        {
+            if (liftObject.Position.Y == liftObject.OriginalY)
+            {
+                // Create new box that's 1/2 size
+                Rectangle softBoundBox = new Rectangle((int)(liftObject.BoundBox.X + liftObject.Width / 4), (int)(liftObject.BoundBox.Y + liftObject.Height / 4), (int)(liftObject.Width / 2), (int)(liftObject.Height / 2));
+                return BoundBox.Intersects(softBoundBox);
+            }
+            else
+                return false;
+        }
 
+        // Check if object is below and in beam's range.
+        private bool IsInBeamRange(Vector2 beamPosition, int beamWidth)
+        {
+            // Edges of object
+            float leftEdge = this.Position.X;
+            float rightEdge = leftEdge + this.Width;
 
-
-
-
-
-
+            if ( Position.Y >= beamPosition.Y &&
+                ((leftEdge <= beamPosition.X + beamWidth && leftEdge >= beamPosition.X) ||
+                (rightEdge >= beamPosition.X && rightEdge <= beamPosition.X + beamWidth) ||
+                (leftEdge <= beamPosition.X && rightEdge >= beamPosition.X + beamWidth)))
+                return true;
+            else
+                return false;
+        }
     }
 }
