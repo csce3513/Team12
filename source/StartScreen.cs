@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace ProjectCow
 {
@@ -26,6 +28,8 @@ namespace ProjectCow
         private double delay2 = 0;
         private ContentManager manager;
         private InputManager input;
+
+        protected Song song;
 
         // Name of pictures (menu, instruction)
         string[] start = new string[2];
@@ -56,6 +60,9 @@ namespace ProjectCow
             }
             starts[0] = theContentManager.Load<Texture2D>("ssstart");
             starts[1] = theContentManager.Load<Texture2D>("ssstartw");
+
+            song = theContentManager.Load<Song>("tomb");
+            MediaPlayer.Play(song);
 
             // Only set content manager once
             if (manager == null)
@@ -107,6 +114,7 @@ namespace ProjectCow
         // Restart the game
         public void Start()
         {
+            MediaPlayer.Stop();
             Manager.PushScreen(new GameScreen());
         }
 
