@@ -17,11 +17,14 @@
         public String Name { get; protected set; }
         public int Width { get; protected set; }
         protected Texture2D Image { get; set; }
+        public ContentManager manager;
 
         // Sets the acceleration of the beam
         public float Force { get; protected set; }
 
         public abstract void LoadContent(ContentManager content);
+
+        public abstract void LoadNextBeam();
 
         // Get position from spaceship to align beam
         public void Update(Vector2 position)
@@ -31,8 +34,12 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(Image != null)
+            //LoadContent(manager);
+            if (Image != null)
+            {
+                LoadNextBeam();
                 spriteBatch.Draw(Image, Position, Color.White);
+            }
         }
     }
 }
