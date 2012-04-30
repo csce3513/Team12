@@ -6,6 +6,7 @@
     using System.Text;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     /// <summary>
@@ -39,7 +40,12 @@
             }
         }
 
-        public Tank(Vector2 position, GameObjectsManager manager, Random random)
+        //rocket sound
+        SoundEffect rocket_effect;
+        string rocket_string;
+        private Vector2 shipPosition;
+
+        public Tank(Vector2 position, GameObjectsManager manager, Random random, Vector2 shipPos)
             : base(position, 0.98f, manager, 25, -10)
         {
             Position = position;
@@ -50,6 +56,13 @@
             gunRotation = 0;
             shootTimer = new TimeSpan();
             this.random = random;
+
+            int temp = random.Next(2);
+            if (temp == 0)
+                rocket_string = "bomb-02";
+            else if (temp == 1)
+                rocket_string = "bomb-03";
+            shipPosition = shipPos;
         }
 
         public override void LoadContent(ContentManager content)
@@ -58,6 +71,7 @@
             gunImage = content.Load<Texture2D>("tankgun");
             // Origin based on real image sizes
             gunOrigin = new Vector2(0, gunImage.Height / 2);
+            rocket_effect = content.Load<SoundEffect>(rocket_string);
         }
 
         // Move towards the screen the player is on
@@ -90,8 +104,13 @@
             {
                 shootTimer -= TimeSpan.FromSeconds(1);
                 if (random.Next(100) < 50)
+                {
                     manager.AddObject(new SmallRocket(GunPosition, manager));
+                    rocket_effect.Play(); //couldn't find a reliable way to control how much the sound plays
+                                          //so I guess we could just scale back how many tanks spawn at a time
+                }
             }
+        
         }
 
         public override void Update(GameTime gameTime)
