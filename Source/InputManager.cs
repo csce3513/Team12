@@ -109,6 +109,14 @@
                 return false;
         }
 
+        public bool IsEnterKeyPressed()
+        {
+            if (currentState.IsKeyDown(Keys.Enter) && !previousState.IsKeyDown(Keys.Enter))
+                return true;
+            else
+                return false;
+        }
+
         public void Update()
         {
             // Set the previous state before updating current state

@@ -7,6 +7,8 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Audio;
+    using Microsoft.Xna.Framework.Media;
 
     /// <summary>
     /// Screen for displaying the main game.
@@ -23,6 +25,7 @@
         private Random random;
         // TimeSpan to generate random object every second
         private TimeSpan generateObjectTimer;
+        private Song song;
 
         public ScreenManager Manager { get; set; }
 
@@ -40,6 +43,8 @@
 
         public void LoadContent(ContentManager content)
         {
+            song = content.Load<Song>("gamesong1");
+            MediaPlayer.Play(song);
             if (content != null)
             {
                 background.LoadContent(content);

@@ -53,7 +53,7 @@ namespace ProjectCow
 
             // TODO: use this.Content to load your game content here
             screenManager.Load(this.Content);
-            screenManager.PushScreen(new GameScreen());
+            screenManager.PushScreen(new StartScreen());
         }
 
         /// <summary>
