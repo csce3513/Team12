@@ -92,7 +92,7 @@
             else
                 position.X += 1440; // Object appears on next screen
 
-            Tank tank = new Tank(position, this, random);
+            Tank tank = new Tank(position, this, random, Spaceship.Position);
             AddObject(tank);
         }
 

@@ -6,6 +6,7 @@
     using System.Text;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework;
 
     public class Cow : LiftObject
@@ -32,6 +33,11 @@
         private readonly int MOVE_SPEED = 1;
         private int currentMoveSpeed;
 
+        //cow sound
+        SoundEffect cowmoo;
+        string cowsound;
+        bool isMooing = false;
+
         public Cow(Vector2 position, float resistance, GameObjectsManager manager, Random random)
             : base(position, resistance, manager, 1, 1)
         {
@@ -45,6 +51,18 @@
             moveLeft = false;
             moveRight = false;
             frightened = false;
+
+            int temp = random.Next(5);
+            if (temp == 0)
+                cowsound = "cow-moo1";
+            else if (temp == 1)
+                cowsound = "cow-moo2";
+            else if (temp == 2)
+                cowsound = "cow-moo3";
+            else if (temp == 3)
+                cowsound = "cow-moo4";
+            else if (temp == 4)
+                cowsound = "cow-moo5";
         }
 
         public override void LoadContent(ContentManager content)
@@ -52,6 +70,7 @@
             image = content.Load<Texture2D>("cartooncow2");
             frightenedImage = content.Load<Texture2D>("angrycartooncow");
             currentImage = image;
+            cowmoo = content.Load<SoundEffect>(cowsound);
         }
 
         private void MoveRandomly(GameTime gameTime)
@@ -99,6 +118,13 @@
                 currentMoveSpeed = MOVE_SPEED * 3;
                 currentImage = frightenedImage;
                 actionDuration = TimeSpan.Zero;
+
+                if (isMooing == false)
+                {
+                    cowmoo.Play();
+                }
+
+                isMooing = true;
             }
         }
 
