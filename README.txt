@@ -1,0 +1,2 @@
+Press Space to use tractor beam.
+Press p for pause menu during game.
